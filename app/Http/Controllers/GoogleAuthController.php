@@ -14,11 +14,16 @@ class GoogleAuthController extends Controller
     return Socialite::driver('google')->stateless()->redirect();
   }
 
-  public function googleAuthLogin()
+  public function googleAuthLogin(string $token)
   {
-    $googleUser = Socialite::driver('google')->stateless()->user();
+    return response()->json([
+      'token' => $token,
+    ]);
 
-    User::updateOrCreate([
+    $googleUser = Socialite::driver('google')->userFromToken($request->input('token'));
+
+
+    $user = User::updateOrCreate([
       'google_id' => $googleUser->id,
     ], [
       'google_id'            => $googleUser->id,
@@ -29,8 +34,9 @@ class GoogleAuthController extends Controller
       'google_refresh_token' => $googleUser->refreshToken,
     ]);
 
-//    Auth::login($user);
-
-    return to_route('success');
+    return response()->json([
+      'user'      => $user,
+      'api_token' => $user->createToken('api_token')->plainTextToken
+    ]);
   }
 }

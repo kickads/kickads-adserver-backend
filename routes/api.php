@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(GoogleAuthController::class)->group(function () {
   Route::get('/auth/google/redirect', 'googleAuthRedirect')->name('google.redirect');
-  Route::get('/auth/google/callback', 'googleAuthLogin')->name('google.login');
+  Route::get('/auth/google/callback/{token}', 'googleAuthLogin')->name('google.login');
 });
 
 Route::get('/', function () {
@@ -31,4 +31,12 @@ Route::get('/', function () {
 
 Route::get('/success', function () {
   return view('success');
+})->name('success');
+
+Route::get('/prueba', function () {
+
+  return response()->json([
+    'status' => 'success',
+    'data'   => []
+  ]);
 })->name('success');
