@@ -3,7 +3,6 @@
 use App\Http\Controllers\GoogleAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +19,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   return $request->user();
 });
 
+// Pruebas con React
 Route::controller(GoogleAuthController::class)->group(function () {
   Route::get('/auth/google/redirect', 'googleAuthRedirect')->name('google.redirect');
-  Route::get('/auth/google/callback/{token}', 'googleAuthLogin')->name('google.login');
+  Route::get('/auth/google/callback/{accessToken}', 'googleAuthLogin')->name('google.login');
 });
 
+// Pruebas con Laravel
 Route::get('/', function () {
   return view('welcome');
 })->name('welcome');
@@ -34,7 +35,6 @@ Route::get('/success', function () {
 })->name('success');
 
 Route::get('/prueba', function () {
-
   return response()->json([
     'status' => 'success',
     'data'   => []
