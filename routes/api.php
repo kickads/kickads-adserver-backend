@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BusinessModelController;
 use App\Http\Controllers\GoogleAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,8 @@ Route::controller(GoogleAuthController::class)->group(function () {
   Route::get('/auth/google/redirect', 'googleAuthRedirect')->name('google.redirect');
   Route::get('/auth/google/callback/{accessToken}', 'googleAuthLogin')->name('google.login');
 });
+
+Route::apiResource('business-models', BusinessModelController::class);
 
 // Pruebas con Laravel
 Route::get('/', function () {
