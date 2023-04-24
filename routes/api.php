@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BusinessModelController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\EntityController;
 use App\Http\Controllers\GoogleAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,7 @@ Route::controller(GoogleAuthController::class)->group(function () {
 
 Route::apiResource('business-models', BusinessModelController::class);
 Route::apiResource('countries', CountryController::class);
+Route::apiResource('entities', EntityController::class);
 
 // Pruebas con Laravel
 Route::get('/', function () {
