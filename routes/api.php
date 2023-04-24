@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdvertiserController;
 use App\Http\Controllers\BusinessModelController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CountryController;
@@ -35,6 +36,7 @@ Route::apiResource('countries', CountryController::class);
 Route::apiResource('entities', EntityController::class);
 Route::apiResource('currencies', CurrencyController::class);
 Route::apiResource('companies', CompanyController::class);
+Route::apiResource('advertisers', AdvertiserController::class);
 
 // Pruebas con Laravel
 Route::get('/', function () {
