@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleAuthController extends Controller
@@ -26,6 +27,8 @@ class GoogleAuthController extends Controller
       'google_token'         => $googleUser->token,
       'google_refresh_token' => $googleUser->refreshToken,
     ]);
+
+    Auth::login($user);
 
     return response()->json([
       'user'      => $user,
