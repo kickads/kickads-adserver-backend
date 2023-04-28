@@ -8,6 +8,7 @@ use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-  return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//  return $request->user();
+//});
 
 // Pruebas con React
 Route::controller(GoogleAuthController::class)->group(function () {
@@ -39,6 +40,10 @@ Route::apiResource('currencies', CurrencyController::class);
 Route::apiResource('companies', CompanyController::class);
 Route::apiResource('advertisers', AdvertiserController::class);
 Route::apiResource('roles', RoleController::class);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+  Route::apiResource('users', UserController::class);
+});
 
 // Pruebas con Laravel
 Route::get('/', function () {
