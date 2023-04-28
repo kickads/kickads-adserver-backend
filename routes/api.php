@@ -7,6 +7,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,7 @@ Route::apiResource('entities', EntityController::class);
 Route::apiResource('currencies', CurrencyController::class);
 Route::apiResource('companies', CompanyController::class);
 Route::apiResource('advertisers', AdvertiserController::class);
+Route::apiResource('roles', RoleController::class);
 
 // Pruebas con Laravel
 Route::get('/', function () {
