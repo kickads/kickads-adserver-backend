@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -23,6 +23,18 @@ class UserController extends Controller
   public function show(User $user)
   {
     return response()->json($user);
+  }
+
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(Request $request, User $user)
+  {
+    $oldUser = User::find($user->id);
+    $oldUser->is_enabled = $request->is_enabled;
+    $oldUser->save();
+
+    return response()->json($oldUser);
   }
 
   /**
