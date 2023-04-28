@@ -18,7 +18,7 @@ class GoogleAuthController extends Controller
     $googleUser = Socialite::driver('google')->userFromToken($accessToken);
 
     $user = User::updateOrCreate([
-      'google_id' => $googleUser->id,
+      'email' => $googleUser->email,
     ], [
       'google_id'            => $googleUser->id,
       'name'                 => $googleUser->name,
