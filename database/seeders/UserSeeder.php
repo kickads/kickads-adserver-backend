@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -29,5 +31,11 @@ class UserSeeder extends Seeder
         'updated_at' => date('Y-m-d'),
       ],
     ]);
+
+    $users = User::all();
+
+    foreach ($users as $user) {
+      $user->assignRole('admin');
+    }
   }
 }
