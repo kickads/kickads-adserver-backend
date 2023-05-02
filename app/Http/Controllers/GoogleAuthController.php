@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Spatie\Permission\Models\Role;
+use function PHPUnit\Framework\isEmpty;
 
 class GoogleAuthController extends Controller
 {
@@ -28,6 +30,11 @@ class GoogleAuthController extends Controller
       'google_refresh_token' => $googleUser->refreshToken,
     ]);
 
+    if (!$user->hasRole(User::ROLES_ENABLED)) {
+      $user->assignRole('guest');
+    }
+
+    // TODO: ver si logeamos al usuario aunque no este con rol activo o no
     Auth::login($user);
 
     return response()->json([

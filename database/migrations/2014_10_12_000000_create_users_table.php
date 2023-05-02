@@ -18,7 +18,6 @@ return new class extends Migration {
       $table->string('avatar')->nullable();
       $table->string('google_token')->nullable();
       $table->string('google_refresh_token')->nullable();
-      $table->boolean('is_enabled')->default(false);
       $table->timestamp('email_verified_at')->nullable();
       $table->rememberToken();
       $table->timestamps();

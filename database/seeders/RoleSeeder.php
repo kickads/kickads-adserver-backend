@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class RoleSeeder extends Seeder
 {
@@ -37,6 +39,11 @@ class RoleSeeder extends Seeder
       ],
       [
         'name'       => 'comercial',
+        'created_at' => date('Y-m-d'),
+        'updated_at' => date('Y-m-d'),
+      ],
+      [
+        'name'       => 'guest',
         'created_at' => date('Y-m-d'),
         'updated_at' => date('Y-m-d'),
       ]

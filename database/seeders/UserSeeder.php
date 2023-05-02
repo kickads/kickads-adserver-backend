@@ -19,14 +19,12 @@ class UserSeeder extends Seeder
       [
         'name'       => 'Guillermo Ojeda',
         'email'      => 'guillermo.ojeda@kickads.mobi',
-        'is_enabled' => true,
         'created_at' => date('Y-m-d'),
         'updated_at' => date('Y-m-d'),
       ],
       [
         'name'       => 'Hernan Arica',
         'email'      => 'hernan.arica@kickads.mobi',
-        'is_enabled' => true,
         'created_at' => date('Y-m-d'),
         'updated_at' => date('Y-m-d'),
       ],

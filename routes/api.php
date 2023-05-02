@@ -41,7 +41,7 @@ Route::apiResource('companies', CompanyController::class);
 Route::apiResource('advertisers', AdvertiserController::class);
 Route::apiResource('roles', RoleController::class);
 
-Route::middleware(['auth:sanctum', 'is-enabled'])->group(function () {
+Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
   Route::apiResource('users', UserController::class);
 });
 
