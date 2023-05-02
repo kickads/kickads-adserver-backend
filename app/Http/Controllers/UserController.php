@@ -31,10 +31,10 @@ class UserController extends Controller
   public function update(Request $request, User $user)
   {
     $oldUser = User::find($user->id);
-    $oldUser->is_enabled = $request->is_enabled;
-    $oldUser->save();
+    $oldUser->removeRole($oldUser->roles[0]->name);
+    $oldUser->assignRole($request->role);
 
-    return response()->json($oldUser);
+    return response()->json($oldUser->roles);
   }
 
   /**
