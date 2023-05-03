@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessModel;
+use App\repositories\BusinessModelRepository;
 use Illuminate\Http\Request;
 
 class BusinessModelController extends Controller
 {
+  private BusinessModelRepository $businessModelRepository;
+
+  public function __construct(BusinessModelRepository $businessModelRepository)
+  {
+    $this->businessModelRepository = $businessModelRepository;
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    $businessModels = BusinessModel::all();
+    $businessModels = $this->businessModelRepository->all();
 
     return response()->json($businessModels);
   }
@@ -22,9 +30,7 @@ class BusinessModelController extends Controller
    */
   public function store(Request $request)
   {
-    $businessModels = BusinessModel::create([
-      'name' => $request->name
-    ]);
+    $businessModels = $this->businessModelRepository->create($request);
 
     return response()->json($businessModels);
   }
@@ -34,7 +40,7 @@ class BusinessModelController extends Controller
    */
   public function show(BusinessModel $businessModel)
   {
-    return response()->json($businessModel);
+    return response()->json($this->businessModelRepository->find($businessModel));
   }
 
   /**
@@ -42,9 +48,7 @@ class BusinessModelController extends Controller
    */
   public function update(Request $request, BusinessModel $businessModel)
   {
-    $oldBusinessModel = BusinessModel::find($businessModel->id);
-    $oldBusinessModel->name = $request->name;
-    $oldBusinessModel->save();
+    $oldBusinessModel = $this->businessModelRepository->update($request, $businessModel);
 
     return response()->json($oldBusinessModel);
   }
@@ -54,7 +58,7 @@ class BusinessModelController extends Controller
    */
   public function destroy(BusinessModel $businessModel)
   {
-    $businessModel->delete();
+    $this->businessModelRepository->delete($businessModel);
 
     return response()->json([
       'status' => 'success',
