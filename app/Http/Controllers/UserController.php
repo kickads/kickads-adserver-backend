@@ -3,18 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\repositories\UserRepository;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+  private UserRepository $userRepository;
+
+  public function __construct(UserRepository $userRepository)
+  {
+    $this->userRepository = $userRepository;
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    $users = User::all();
-
-    return response()->json($users);
+    return response()->json($this->userRepository->all());
   }
 
   /**
@@ -30,9 +36,7 @@ class UserController extends Controller
    */
   public function update(Request $request, User $user)
   {
-    $oldUser = User::find($user->id);
-    $oldUser->removeRole($oldUser->roles[0]->name);
-    $oldUser->assignRole($request->role);
+    $oldUser = $this->userRepository->updateRole($request, $user);
 
     return response()->json($oldUser->roles);
   }
@@ -46,8 +50,7 @@ class UserController extends Controller
 //    request()->session()->regenerateToken();
 //    request()->user()->currentAccessToken()->delete();
 
-
-    $user->delete();
+    $this->userRepository->delete($user);
 
     return response()->json([
       'status' => 'success',
