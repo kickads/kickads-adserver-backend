@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertiser;
+use App\repositories\AdvertiserRepository;
 use Illuminate\Http\Request;
 
 class AdvertiserController extends Controller
 {
+  private AdvertiserRepository $model;
+
+  public function __construct(AdvertiserRepository $advertiserRepository)
+  {
+    $this->model = $advertiserRepository;
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    $advertisers = Advertiser::all();
+    $advertisers = $this->model->all();
 
     return response()->json($advertisers);
   }
@@ -30,7 +38,7 @@ class AdvertiserController extends Controller
    */
   public function show(Advertiser $advertiser)
   {
-    return response()->json($advertiser);
+    return response()->json($this->model->find($advertiser));
   }
 
   /**
@@ -46,7 +54,7 @@ class AdvertiserController extends Controller
    */
   public function destroy(Advertiser $advertiser)
   {
-    $advertiser->delete();
+    $this->model->delete($advertiser);
 
     return response()->json([
       'status' => 'success',
