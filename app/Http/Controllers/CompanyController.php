@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\repositories\CompanyRepository;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
+  private CompanyRepository $companyRepository;
+
+  public function __construct(CompanyRepository $companyRepository)
+  {
+    $this->$companyRepository = $companyRepository;
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    $companies = Company::all();
+    $companies = $this->companyRepository->all();
 
     return response()->json($companies);
   }
@@ -22,11 +30,7 @@ class CompanyController extends Controller
    */
   public function store(Request $request)
   {
-    $company = Company::create([
-      'name'       => $request->name,
-      'entity_id'  => $request->entity_id,
-      'country_id' => $request->country_id
-    ]);
+    $company = $this->companyRepository->create($request);
 
     return response()->json($company);
   }
@@ -36,7 +40,7 @@ class CompanyController extends Controller
    */
   public function show(Company $company)
   {
-    return response()->json($company);
+    return response()->json($this->companyRepository->find($company));
   }
 
   /**
@@ -44,9 +48,7 @@ class CompanyController extends Controller
    */
   public function update(Request $request, Company $company)
   {
-    $oldCompany = Company::find($company->id);
-    $oldCompany->name = $request->name;
-    $oldCompany->save();
+    $oldCompany = $this->companyRepository->update($request, $company);
 
     return response()->json($oldCompany);
   }
@@ -56,7 +58,7 @@ class CompanyController extends Controller
    */
   public function destroy(Company $company)
   {
-    $company->delete();
+    $this->companyRepository->delete($company);
 
     return response()->json([
       'status' => 'success',
