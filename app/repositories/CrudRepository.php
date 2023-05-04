@@ -56,7 +56,5 @@ class CrudRepository
   public function delete(Model $model)
   {
     $model->delete();
-
-    return $model;
   }
 }
