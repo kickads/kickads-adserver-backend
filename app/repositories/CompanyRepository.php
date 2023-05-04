@@ -3,7 +3,6 @@
 namespace App\repositories;
 
 use App\Models\Company;
-use Illuminate\Database\Eloquent\Model;
 
 class CompanyRepository extends CrudRepository
 {

@@ -2,7 +2,6 @@
 
 namespace App\repositories;
 
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Models\Role;
 
 class RoleRepository extends CrudRepository

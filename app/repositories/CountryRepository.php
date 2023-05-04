@@ -3,7 +3,6 @@
 namespace App\repositories;
 
 use App\Models\Country;
-use Illuminate\Database\Eloquent\Model;
 
 class CountryRepository extends CrudRepository
 {

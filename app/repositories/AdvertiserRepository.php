@@ -3,7 +3,6 @@
 namespace App\repositories;
 
 use App\Models\Advertiser;
-use Illuminate\Database\Eloquent\Model;
 
 class AdvertiserRepository extends CrudRepository
 {
