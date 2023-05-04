@@ -12,7 +12,7 @@ class CompanyController extends Controller
 
   public function __construct(CompanyRepository $companyRepository)
   {
-    $this->$companyRepository = $companyRepository;
+    $this->companyRepository = $companyRepository;
   }
 
   /**

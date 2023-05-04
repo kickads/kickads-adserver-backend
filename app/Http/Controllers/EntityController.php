@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class EntityController extends Controller
 {
-  private EntityRepository $model;
+  private EntityRepository $entityRepository;
 
   public function __construct(EntityRepository $entityRepository)
   {
-    $this->model = $entityRepository;
+    $this->entityRepository = $entityRepository;
   }
 
   /**
@@ -20,7 +20,7 @@ class EntityController extends Controller
    */
   public function index()
   {
-    $entities = $this->model->all();
+    $entities = $this->entityRepository->all();
 
     return response()->json($entities);
   }
@@ -30,7 +30,7 @@ class EntityController extends Controller
    */
   public function store(Request $request)
   {
-    $entity = $this->model->create($request);
+    $entity = $this->entityRepository->create($request);
 
     return response()->json($entity);
   }
@@ -40,7 +40,7 @@ class EntityController extends Controller
    */
   public function show(Entity $entity)
   {
-    return response()->json($this->model->find($entity));
+    return response()->json($this->entityRepository->find($entity));
   }
 
   /**
@@ -48,7 +48,7 @@ class EntityController extends Controller
    */
   public function update(Request $request, Entity $entity)
   {
-    $oldEntity = $this->model->update($request, $entity);
+    $oldEntity = $this->entityRepository->update($request, $entity);
 
     return response()->json($oldEntity);
   }
@@ -58,7 +58,7 @@ class EntityController extends Controller
    */
   public function destroy(Entity $entity)
   {
-    $this->model->delete($entity);
+    $this->entityRepository->delete($entity);
 
     return response()->json([
       'status' => 'success',

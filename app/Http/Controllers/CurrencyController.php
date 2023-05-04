@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
 {
-  private CurrencyRepository $model;
+  private CurrencyRepository $currencyRepository;
 
   public function __construct(CurrencyRepository $currencyRepository)
   {
-    $this->model = $currencyRepository;
+    $this->currencyRepository = $currencyRepository;
   }
 
   /**
@@ -20,7 +20,7 @@ class CurrencyController extends Controller
    */
   public function index()
   {
-    $currencies = $this->model->all();
+    $currencies = $this->currencyRepository->all();
 
     return response()->json($currencies);
   }
@@ -30,7 +30,7 @@ class CurrencyController extends Controller
    */
   public function store(Request $request)
   {
-    $currency = $this->model->create($request);
+    $currency = $this->currencyRepository->create($request);
 
     return response()->json($currency);
   }
@@ -40,7 +40,7 @@ class CurrencyController extends Controller
    */
   public function show(Currency $currency)
   {
-    return response()->json($this->model->find($currency));
+    return response()->json($this->currencyRepository->find($currency));
   }
 
   /**
@@ -48,7 +48,7 @@ class CurrencyController extends Controller
    */
   public function update(Request $request, Currency $currency)
   {
-    $oldCurrency = $this->model->update($request, $currency);
+    $oldCurrency = $this->currencyRepository->update($request, $currency);
 
     return response()->json($oldCurrency);
   }
@@ -58,7 +58,7 @@ class CurrencyController extends Controller
    */
   public function destroy(Currency $currency)
   {
-    $this->model->delete($currency);
+    $this->currencyRepository->delete($currency);
 
     return response()->json([
       'status' => 'success',

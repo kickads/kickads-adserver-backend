@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class AdvertiserController extends Controller
 {
-  private AdvertiserRepository $model;
+  private AdvertiserRepository $advertiserRepository;
 
   public function __construct(AdvertiserRepository $advertiserRepository)
   {
-    $this->model = $advertiserRepository;
+    $this->advertiserRepository = $advertiserRepository;
   }
 
   /**
@@ -20,7 +20,7 @@ class AdvertiserController extends Controller
    */
   public function index()
   {
-    $advertisers = $this->model->all();
+    $advertisers = $this->advertiserRepository->all();
 
     return response()->json($advertisers);
   }
@@ -38,7 +38,7 @@ class AdvertiserController extends Controller
    */
   public function show(Advertiser $advertiser)
   {
-    return response()->json($this->model->find($advertiser));
+    return response()->json($this->advertiserRepository->find($advertiser));
   }
 
   /**
@@ -54,7 +54,7 @@ class AdvertiserController extends Controller
    */
   public function destroy(Advertiser $advertiser)
   {
-    $this->model->delete($advertiser);
+    $this->advertiserRepository->delete($advertiser);
 
     return response()->json([
       'status' => 'success',
