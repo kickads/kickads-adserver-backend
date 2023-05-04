@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use App\repositories\CountryRepository;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
+  private CountryRepository $countryRepository;
+
+  public function __construct(CountryRepository $countryRepository)
+  {
+    $this->countryRepository = $countryRepository;
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    $countries = Country::all();
+    $countries = $this->countryRepository->all();
 
     return response()->json($countries);
   }
@@ -22,9 +30,7 @@ class CountryController extends Controller
    */
   public function store(Request $request)
   {
-    $countries = Country::create([
-      'name' => $request->name
-    ]);
+    $countries = $this->countryRepository->create($request);
 
     return response()->json($countries);
   }
@@ -34,7 +40,7 @@ class CountryController extends Controller
    */
   public function show(Country $country)
   {
-    return response()->json($country);
+    return response()->json($this->countryRepository->find($country));
   }
 
   /**
@@ -42,9 +48,7 @@ class CountryController extends Controller
    */
   public function update(Request $request, Country $country)
   {
-    $oldCountry = Country::find($country->id);
-    $oldCountry->name = $request->name;
-    $oldCountry->save();
+    $oldCountry = $this->countryRepository->update($request, $country);
 
     return response()->json($oldCountry);
   }
@@ -54,7 +58,7 @@ class CountryController extends Controller
    */
   public function destroy(Country $country)
   {
-    $country->delete();
+    $this->countryRepository->delete($country);
 
     return response()->json([
       'status' => 'success',
