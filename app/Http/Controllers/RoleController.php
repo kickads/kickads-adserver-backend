@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\repositories\RoleRepository;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+  private RoleRepository $roleRepository;
+
+  public function __construct(RoleRepository $roleRepository)
+  {
+    $this->roleRepository = $roleRepository;
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    $roles = Role::all()->pluck('name');
+    $roles = $this->roleRepository->getRoleNames();
 
     return response()->json($roles);
   }
@@ -22,10 +30,7 @@ class RoleController extends Controller
    */
   public function store(Request $request)
   {
-    $role = Role::create([
-      'name'       => $request->name,
-      'guard_name' => $request->guard_name,
-    ]);
+    $role = $this->roleRepository->create($request);
 
     return response()->json($role);
   }
@@ -35,7 +40,7 @@ class RoleController extends Controller
    */
   public function show(Role $role)
   {
-    return response()->json($role);
+    return response()->json($this->roleRepository->find($role));
   }
 
   /**
@@ -43,10 +48,7 @@ class RoleController extends Controller
    */
   public function update(Request $request, Role $role)
   {
-    $oldRole = Role::find($role->id);
-    $oldRole->name = $request->name;
-    $oldRole->guard_name = $request->guard_name;
-    $oldRole->save();
+    $oldRole = $this->roleRepository->updateRoleName($request, $role);
 
     return response()->json($oldRole);
   }
@@ -56,7 +58,7 @@ class RoleController extends Controller
    */
   public function destroy(Role $role)
   {
-    $role->delete();
+    $this->roleRepository->delete($role);
 
     return response()->json([
       'status' => 'success',
