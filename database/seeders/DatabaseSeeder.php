@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
       BusinessModelSeeder::class,
       CountrySeeder::class,
       EntitySeeder::class,
+      CompanySeeder::class,
     ]);
   }
 }
