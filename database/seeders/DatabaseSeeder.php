@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
       CountrySeeder::class,
       EntitySeeder::class,
       CompanySeeder::class,
+      CurrencySeeder::class,
     ]);
   }
 }
