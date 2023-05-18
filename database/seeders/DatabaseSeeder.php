@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
       RoleSeeder::class,
       UserSeeder::class,
       BusinessModelSeeder::class,
-      CountrySeeder::class
+      CountrySeeder::class,
+      EntitySeeder::class,
     ]);
   }
 }
