@@ -27,7 +27,6 @@ return new class extends Migration {
       $table->string('exchange_rate');
       $table->string('campaign_name');
       $table->string('campaigns_restrictions');
-      $table->string('external_operation');
       $table->string('comment');
       $table->timestamps();
     });
