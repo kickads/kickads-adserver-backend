@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
-class GoogleAuthController extends Controller
+class AuthController extends Controller
 {
-  public function googleAuthLogin(Request $request)
+  public function login(Request $request)
   {
     $accessToken = $request->input('accessToken');
     $googleUser = Socialite::driver('google')->userFromToken($accessToken);
@@ -29,8 +29,19 @@ class GoogleAuthController extends Controller
     }
 
     return response()->json([
+      'status'    => 'success',
       'user'      => $user,
       'api_token' => $user->createToken('api_token')->plainTextToken
+    ]);
+  }
+
+  function logout(Request $request)
+  {
+    $user = $request->user();
+    $user->tokens()->delete();
+
+    return response()->json([
+      'status' => 'success'
     ]);
   }
 }

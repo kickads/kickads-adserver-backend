@@ -7,7 +7,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\EntityController;
-use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -24,8 +24,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Pruebas con React
-Route::controller(GoogleAuthController::class)->prefix('auth')->group(function () {
-  Route::post('login', 'googleAuthLogin');
+Route::controller(AuthController::class)->prefix('auth')->group(function () {
+  Route::post('login', 'login');
+  Route::post('logout', 'logout')->middleware('auth:sanctum');
 });
 
 Route::apiResource('business-models', BusinessModelController::class);
