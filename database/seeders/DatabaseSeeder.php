@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
       EntitySeeder::class,
       CompanySeeder::class,
       CurrencySeeder::class,
+      AdvertiserSeeder::class,
     ]);
   }
 }

@@ -18,7 +18,7 @@ return new class extends Migration {
       $table->foreignId('currency_id')->constrained();
       $table->string('name', '100');
       $table->string('prefix', '10');
-      $table->string('address', '50');
+      $table->string('address');
       $table->string('state', '50'); // Consultar en que consiste
       $table->string('zip_code', '20');
       $table->string('commercial_contact', '100'); // Ver de unificar esto con lo de abajo
