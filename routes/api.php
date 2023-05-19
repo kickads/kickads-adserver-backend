@@ -10,7 +10,6 @@ use App\Http\Controllers\EntityController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,14 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//  return $request->user();
-//});
-
 // Pruebas con React
-Route::controller(GoogleAuthController::class)->group(function () {
-  Route::get('/auth/google/redirect', 'googleAuthRedirect')->name('google.redirect');
-  Route::get('/auth/google/callback/{accessToken}', 'googleAuthLogin')->name('google.login');
+Route::controller(GoogleAuthController::class)->prefix('auth')->group(function () {
+  Route::post('login', 'googleAuthLogin');
 });
 
 Route::apiResource('business-models', BusinessModelController::class);
@@ -46,19 +40,3 @@ Route::apiResource('deals', DealController::class);
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
   Route::apiResource('users', UserController::class);
 });
-
-// Pruebas con Laravel
-Route::get('/', function () {
-  return view('welcome');
-})->name('welcome');
-
-Route::get('/success', function () {
-  return view('success');
-})->name('success');
-
-Route::get('/prueba', function () {
-  return response()->json([
-    'status' => 'success',
-    'data'   => []
-  ]);
-})->name('success');

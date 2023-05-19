@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleAuthController extends Controller
 {
-  public function googleAuthRedirect()
+  public function googleAuthLogin(Request $request)
   {
-    return Socialite::driver('google')->stateless()->redirect();
-  }
-
-  public function googleAuthLogin(string $accessToken)
-  {
+    $accessToken = $request->input('accessToken');
     $googleUser = Socialite::driver('google')->userFromToken($accessToken);
 
     $user = User::updateOrCreate([
