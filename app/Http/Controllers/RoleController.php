@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\repositories\RoleRepository;
+use App\Repositories\RoleRepository;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 

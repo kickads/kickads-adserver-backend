@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entity;
-use App\repositories\EntityRepository;
+use App\Repositories\EntityRepository;
 use Illuminate\Http\Request;
 
 class EntityController extends Controller

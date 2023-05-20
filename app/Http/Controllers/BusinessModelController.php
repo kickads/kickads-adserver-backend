@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessModel;
-use App\repositories\BusinessModelRepository;
+use App\Repositories\BusinessModelRepository;
 use Illuminate\Http\Request;
 
 class BusinessModelController extends Controller
