@@ -5,7 +5,10 @@ use App\Http\Controllers\BusinessModelController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\DealBrandingController;
 use App\Http\Controllers\DealController;
+use App\Http\Controllers\DealPerformanceController;
+use App\Http\Controllers\DealPmpController;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
@@ -36,7 +39,10 @@ Route::apiResource('currencies', CurrencyController::class);
 Route::apiResource('companies', CompanyController::class);
 Route::apiResource('advertisers', AdvertiserController::class);
 Route::apiResource('roles', RoleController::class);
-Route::apiResource('deals', DealController::class);
+Route::apiResource('deals', DealController::class); // TODO: Examinar su existencia
+Route::apiResource('deals_branding', DealBrandingController::class);
+Route::apiResource('deals_performance', DealPerformanceController::class);
+Route::apiResource('deals_pmp', DealPmpController::class);
 
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
   Route::apiResource('users', UserController::class);
