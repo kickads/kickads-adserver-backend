@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
       DealSeeder::class,
       DealBrandingSeeder::class,
       DealPerformanceSeeder::class,
+      DealPmpSeeder::class,
     ]);
   }
 }
