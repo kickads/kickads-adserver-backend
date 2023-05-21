@@ -16,6 +16,7 @@ return new class extends Migration {
       /*
        * TODO: agregar
        * dsp_id
+       * seat_id
        */
       $table->foreignId('business_model_id')->constrained();
       $table->foreignId('advertiser_id')->constrained();

@@ -30,9 +30,9 @@ class DealBrandingController extends Controller
    */
   public function store(Request $request)
   {
-    $deal = $this->dealBrandingRepository->create($request);
+    $dealCreated = $this->dealBrandingRepository->create($request);
 
-    return response()->json($deal);
+    return response()->json($dealCreated);
   }
 
   /**
@@ -48,9 +48,9 @@ class DealBrandingController extends Controller
    */
   public function update(Request $request, DealBranding $dealsBranding)
   {
-    $dealBrandingUpdated = $this->dealBrandingRepository->update($request, $dealsBranding);
+    $dealUpdated = $this->dealBrandingRepository->update($request, $dealsBranding);
 
-    return response()->json($dealBrandingUpdated);
+    return response()->json($dealUpdated);
   }
 
   /**

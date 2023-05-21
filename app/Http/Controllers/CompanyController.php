@@ -30,9 +30,9 @@ class CompanyController extends Controller
    */
   public function store(Request $request)
   {
-    $company = $this->companyRepository->create($request);
+    $companyCreated = $this->companyRepository->create($request);
 
-    return response()->json($company);
+    return response()->json($companyCreated);
   }
 
   /**
@@ -48,9 +48,9 @@ class CompanyController extends Controller
    */
   public function update(Request $request, Company $company)
   {
-    $oldCompany = $this->companyRepository->update($request, $company);
+    $companyUpdated = $this->companyRepository->update($request, $company);
 
-    return response()->json($oldCompany);
+    return response()->json($companyUpdated);
   }
 
   /**

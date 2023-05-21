@@ -30,9 +30,9 @@ class CurrencyController extends Controller
    */
   public function store(Request $request)
   {
-    $currency = $this->currencyRepository->create($request);
+    $currencyCreated = $this->currencyRepository->create($request);
 
-    return response()->json($currency);
+    return response()->json($currencyCreated);
   }
 
   /**
@@ -48,9 +48,9 @@ class CurrencyController extends Controller
    */
   public function update(Request $request, Currency $currency)
   {
-    $oldCurrency = $this->currencyRepository->update($request, $currency);
+    $currencyUpdated = $this->currencyRepository->update($request, $currency);
 
-    return response()->json($oldCurrency);
+    return response()->json($currencyUpdated);
   }
 
   /**

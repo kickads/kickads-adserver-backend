@@ -30,9 +30,9 @@ class CountryController extends Controller
    */
   public function store(Request $request)
   {
-    $countries = $this->countryRepository->create($request);
+    $countryCreated = $this->countryRepository->create($request);
 
-    return response()->json($countries);
+    return response()->json($countryCreated);
   }
 
   /**
@@ -48,9 +48,9 @@ class CountryController extends Controller
    */
   public function update(Request $request, Country $country)
   {
-    $oldCountry = $this->countryRepository->update($request, $country);
+    $countryUpdated = $this->countryRepository->update($request, $country);
 
-    return response()->json($oldCountry);
+    return response()->json($countryUpdated);
   }
 
   /**

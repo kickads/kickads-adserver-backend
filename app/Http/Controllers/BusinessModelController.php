@@ -30,9 +30,9 @@ class BusinessModelController extends Controller
    */
   public function store(Request $request)
   {
-    $businessModels = $this->businessModelRepository->create($request);
+    $businessModelCreated = $this->businessModelRepository->create($request);
 
-    return response()->json($businessModels);
+    return response()->json($businessModelCreated);
   }
 
   /**
@@ -48,9 +48,9 @@ class BusinessModelController extends Controller
    */
   public function update(Request $request, BusinessModel $businessModel)
   {
-    $oldBusinessModel = $this->businessModelRepository->update($request, $businessModel);
+    $businessModelUpdated = $this->businessModelRepository->update($request, $businessModel);
 
-    return response()->json($oldBusinessModel);
+    return response()->json($businessModelUpdated);
   }
 
   /**

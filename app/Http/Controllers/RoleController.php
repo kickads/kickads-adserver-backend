@@ -30,9 +30,9 @@ class RoleController extends Controller
    */
   public function store(Request $request)
   {
-    $role = $this->roleRepository->create($request);
+    $roleCreated = $this->roleRepository->create($request);
 
-    return response()->json($role);
+    return response()->json($roleCreated);
   }
 
   /**
@@ -48,9 +48,9 @@ class RoleController extends Controller
    */
   public function update(Request $request, Role $role)
   {
-    $oldRole = $this->roleRepository->updateRoleName($request, $role);
+    $roleUpdated = $this->roleRepository->updateRoleName($request, $role);
 
-    return response()->json($oldRole);
+    return response()->json($roleUpdated);
   }
 
   /**

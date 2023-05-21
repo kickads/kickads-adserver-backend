@@ -30,9 +30,9 @@ class EntityController extends Controller
    */
   public function store(Request $request)
   {
-    $entity = $this->entityRepository->create($request);
+    $entityCreated = $this->entityRepository->create($request);
 
-    return response()->json($entity);
+    return response()->json($entityCreated);
   }
 
   /**
@@ -48,9 +48,9 @@ class EntityController extends Controller
    */
   public function update(Request $request, Entity $entity)
   {
-    $oldEntity = $this->entityRepository->update($request, $entity);
+    $entityUpdated = $this->entityRepository->update($request, $entity);
 
-    return response()->json($oldEntity);
+    return response()->json($entityUpdated);
   }
 
   /**
