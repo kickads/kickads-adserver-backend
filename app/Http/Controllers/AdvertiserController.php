@@ -30,7 +30,9 @@ class AdvertiserController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    $advertiserCreated = $this->advertiserRepository->create($request);
+
+    return response()->json($advertiserCreated);
   }
 
   /**
@@ -46,7 +48,9 @@ class AdvertiserController extends Controller
    */
   public function update(Request $request, Advertiser $advertiser)
   {
-    //
+    $advertiserUpdated = $this->advertiserRepository->update($request, $advertiser);
+
+    return response()->json($advertiserUpdated);
   }
 
   /**
