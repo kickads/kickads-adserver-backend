@@ -40,9 +40,9 @@ Route::apiResource('companies', CompanyController::class);
 Route::apiResource('advertisers', AdvertiserController::class);
 Route::apiResource('roles', RoleController::class);
 Route::apiResource('deals', DealController::class); // TODO: Examinar su existencia
-Route::apiResource('deals_branding', DealBrandingController::class);
-Route::apiResource('deals_performance', DealPerformanceController::class);
-Route::apiResource('deals_pmp', DealPmpController::class);
+Route::apiResource('deals-branding', DealBrandingController::class);
+Route::apiResource('deals-performance', DealPerformanceController::class);
+Route::apiResource('deals-pmp', DealPmpController::class);
 
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
   Route::apiResource('users', UserController::class);

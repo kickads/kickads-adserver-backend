@@ -33,7 +33,7 @@ return new class extends Migration {
       $table->tinyInteger('available_budget');
       $table->tinyInteger('saving_profit_percent');
       $table->boolean('client_report')->default(0);
-      $table->integer('external_operation');
+      $table->tinyInteger('external_operation');
       $table->timestamps();
     });
   }

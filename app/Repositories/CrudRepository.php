@@ -43,11 +43,11 @@ class CrudRepository
    */
   public function update(Request $request, Model $model)
   {
-    $oldCurrency = $this->model::find($model->id);
-    $oldCurrency->update($request->all());
-    $oldCurrency->save();
+    $modelUpdated = $this->model::find($model->id);
+    $modelUpdated->update($request->all());
+    $modelUpdated->save();
 
-    return $oldCurrency;
+    return $modelUpdated;
   }
 
   /**

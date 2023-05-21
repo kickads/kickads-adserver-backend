@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
       CurrencySeeder::class,
       AdvertiserSeeder::class,
       DealSeeder::class,
+      DealBrandingSeeder::class,
     ]);
   }
 }
