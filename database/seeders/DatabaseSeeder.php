@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
       AdvertiserSeeder::class,
       DealSeeder::class,
       DealBrandingSeeder::class,
+      DealPerformanceSeeder::class,
     ]);
   }
 }
