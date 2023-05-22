@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdvertiserController;
 use App\Http\Controllers\BusinessModelController;
+use App\Http\Controllers\CampaignCategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CurrencyController;
@@ -9,10 +10,14 @@ use App\Http\Controllers\DealBrandingController;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\DealPerformanceController;
 use App\Http\Controllers\DealPmpController;
+use App\Http\Controllers\DspController;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\IosController;
+use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerticalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +48,11 @@ Route::apiResource('deals', DealController::class); // TODO: Examinar su existen
 Route::apiResource('deals-branding', DealBrandingController::class);
 Route::apiResource('deals-performance', DealPerformanceController::class);
 Route::apiResource('deals-pmp', DealPmpController::class);
+Route::apiResource('verticals', VerticalController::class);
+Route::apiResource('dsps', DspController::class);
+Route::apiResource('ios', IosController::class);
+Route::apiResource('campaign-categories', CampaignCategoryController::class);
+Route::apiResource('priorities', PriorityController::class);
 
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
   Route::apiResource('users', UserController::class);

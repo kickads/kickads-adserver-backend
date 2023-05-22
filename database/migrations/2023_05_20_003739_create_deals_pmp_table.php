@@ -15,13 +15,18 @@ return new class extends Migration {
       $table->id();
       /*
        * TODO: agregar
-       * dsp_id
-       * seat_id
+       * materials_development_id
+       * materials_upload_id
        */
       $table->foreignId('business_model_id')->constrained();
       $table->foreignId('advertiser_id')->constrained();
       $table->foreignId('entity_id')->constrained();
       $table->foreignId('company_id')->constrained();
+      $table->foreignId('vertical_id')->constrained();
+      $table->foreignId('dsp_id')->constrained();
+      $table->foreignId('ios_id')->constrained();
+      $table->foreignId('campaign_category_id')->constrained();
+      $table->foreignId('priority_id')->constrained();
       $table->string('goal_description');
       $table->string('start_date');
       $table->string('end_date');
@@ -34,7 +39,6 @@ return new class extends Migration {
       $table->string('campaigns_restrictions');
       $table->string('comment');
       // Propios de un Deal Pmp
-      $table->string('vertical');
       $table->string('other_vertical');
       $table->string('other_dsp');
       $table->string('seat_id');

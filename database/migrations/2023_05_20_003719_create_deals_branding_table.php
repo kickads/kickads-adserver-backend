@@ -17,6 +17,9 @@ return new class extends Migration {
       $table->foreignId('advertiser_id')->constrained();
       $table->foreignId('entity_id')->constrained();
       $table->foreignId('company_id')->constrained();
+      $table->foreignId('ios_id')->constrained();
+      $table->foreignId('campaign_category_id')->constrained();
+      $table->foreignId('priority_id')->constrained();
       $table->string('goal_description');
       $table->string('start_date');
       $table->string('end_date');
