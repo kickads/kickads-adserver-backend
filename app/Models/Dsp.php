@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Dsp extends Model
 {
   use HasFactory;
+
+  protected $fillable = ['name'];
 }

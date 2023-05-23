@@ -37,7 +37,6 @@ class DealPmpFactory extends Factory
       'campaign_name'          => $this->faker->name(),
       'campaigns_restrictions' => $this->faker->text(),
       'comment'                => $this->faker->realText(100),
-      'vertical'               => $this->faker->text(),
       'other_vertical'         => $this->faker->text(),
       'other_dsp'              => $this->faker->text(),
       'seat_id'                => $this->faker->randomDigit(),
