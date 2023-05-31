@@ -22,7 +22,7 @@ class CompanyController extends Controller
   {
     $companies = $this->companyRepository->all();
 
-    return response()->json($companies);
+    return jsend_success($companies);
   }
 
   /**
@@ -32,7 +32,7 @@ class CompanyController extends Controller
   {
     $companyCreated = $this->companyRepository->create($request);
 
-    return response()->json($companyCreated);
+    return jsend_success($companyCreated);
   }
 
   /**
@@ -40,7 +40,7 @@ class CompanyController extends Controller
    */
   public function show(Company $company)
   {
-    return response()->json($this->companyRepository->find($company));
+    return jsend_success($this->companyRepository->find($company));
   }
 
   /**
@@ -50,7 +50,7 @@ class CompanyController extends Controller
   {
     $companyUpdated = $this->companyRepository->update($request, $company);
 
-    return response()->json($companyUpdated);
+    return jsend_success($companyUpdated);
   }
 
   /**
@@ -60,9 +60,6 @@ class CompanyController extends Controller
   {
     $this->companyRepository->delete($company);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $company
-    ]);
+    return jsend_success($company);
   }
 }
