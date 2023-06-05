@@ -3,16 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dsp;
+use App\Repositories\DspRepository;
 use Illuminate\Http\Request;
 
 class DspController extends Controller
 {
+  private DspRepository $dspRepository;
+
+  public function __construct(DspRepository $dspRepository)
+  {
+    $this->dspRepository = $dspRepository;
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    //
+    $dsps = $this->dspRepository->all();
+
+    return response()->json($dsps);
   }
 
   /**
@@ -20,7 +30,9 @@ class DspController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    $dspCreated = $this->dspRepository->create($request);
+
+    return jsend_success($dspCreated);
   }
 
   /**
@@ -28,7 +40,7 @@ class DspController extends Controller
    */
   public function show(Dsp $dsp)
   {
-    //
+    return jsend_success($this->dspRepository->find($dsp));
   }
 
   /**
@@ -36,7 +48,9 @@ class DspController extends Controller
    */
   public function update(Request $request, Dsp $dsp)
   {
-    //
+    $dspUpdated = $this->dspRepository->update($request, $dsp);
+
+    return jsend_success($dspUpdated);
   }
 
   /**
@@ -44,6 +58,8 @@ class DspController extends Controller
    */
   public function destroy(Dsp $dsp)
   {
-    //
+    $this->dspRepository->delete($dsp);
+
+    return jsend_success($dsp);
   }
 }

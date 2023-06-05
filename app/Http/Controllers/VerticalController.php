@@ -3,16 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vertical;
+use App\Repositories\VerticalRepository;
 use Illuminate\Http\Request;
 
 class VerticalController extends Controller
 {
+  private VerticalRepository $verticalRepository;
+
+  public function __construct(VerticalRepository $verticalRepository)
+  {
+    $this->verticalRepository = $verticalRepository;
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    //
+    $verticals = $this->verticalRepository->all();
+
+    return response()->json($verticals);
   }
 
   /**
@@ -20,7 +30,9 @@ class VerticalController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    $verticalCreated = $this->verticalRepository->create($request);
+
+    return jsend_success($verticalCreated);
   }
 
   /**
@@ -28,7 +40,7 @@ class VerticalController extends Controller
    */
   public function show(Vertical $vertical)
   {
-    //
+    return jsend_success($this->verticalRepository->find($vertical));
   }
 
   /**
@@ -36,7 +48,9 @@ class VerticalController extends Controller
    */
   public function update(Request $request, Vertical $vertical)
   {
-    //
+    $verticalUpdated = $this->verticalRepository->update($request, $vertical);
+
+    return jsend_success($verticalUpdated);
   }
 
   /**
@@ -44,6 +58,8 @@ class VerticalController extends Controller
    */
   public function destroy(Vertical $vertical)
   {
-    //
+    $this->verticalRepository->delete($vertical);
+
+    return jsend_success($vertical);
   }
 }
