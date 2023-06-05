@@ -22,7 +22,7 @@ class CurrencyController extends Controller
   {
     $currencies = $this->currencyRepository->all();
 
-    return response()->json($currencies);
+    return jsend_success($currencies);
   }
 
   /**
@@ -32,7 +32,7 @@ class CurrencyController extends Controller
   {
     $currencyCreated = $this->currencyRepository->create($request);
 
-    return response()->json($currencyCreated);
+    return jsend_success($currencyCreated);
   }
 
   /**
@@ -40,7 +40,7 @@ class CurrencyController extends Controller
    */
   public function show(Currency $currency)
   {
-    return response()->json($this->currencyRepository->find($currency));
+    return jsend_success($this->currencyRepository->find($currency));
   }
 
   /**
@@ -50,7 +50,7 @@ class CurrencyController extends Controller
   {
     $currencyUpdated = $this->currencyRepository->update($request, $currency);
 
-    return response()->json($currencyUpdated);
+    return jsend_success($currencyUpdated);
   }
 
   /**
@@ -60,9 +60,6 @@ class CurrencyController extends Controller
   {
     $this->currencyRepository->delete($currency);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $currency
-    ]);
+    return jsend_success($currency);
   }
 }

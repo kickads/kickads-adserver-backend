@@ -22,7 +22,7 @@ class AdvertiserController extends Controller
   {
     $advertisers = $this->advertiserRepository->all();
 
-    return response()->json($advertisers);
+    return jsend_success($advertisers);
   }
 
   /**
@@ -32,7 +32,7 @@ class AdvertiserController extends Controller
   {
     $advertiserCreated = $this->advertiserRepository->create($request);
 
-    return response()->json($advertiserCreated);
+    return jsend_success($advertiserCreated);
   }
 
   /**
@@ -40,7 +40,7 @@ class AdvertiserController extends Controller
    */
   public function show(Advertiser $advertiser)
   {
-    return response()->json($this->advertiserRepository->find($advertiser));
+    return jsend_success($this->advertiserRepository->find($advertiser));
   }
 
   /**
@@ -50,7 +50,7 @@ class AdvertiserController extends Controller
   {
     $advertiserUpdated = $this->advertiserRepository->update($request, $advertiser);
 
-    return response()->json($advertiserUpdated);
+    return jsend_success($advertiserUpdated);
   }
 
   /**
@@ -60,9 +60,6 @@ class AdvertiserController extends Controller
   {
     $this->advertiserRepository->delete($advertiser);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $advertiser
-    ]);
+    return jsend_success($advertiser);
   }
 }

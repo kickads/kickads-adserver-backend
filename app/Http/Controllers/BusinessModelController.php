@@ -32,7 +32,7 @@ class BusinessModelController extends Controller
   {
     $businessModelCreated = $this->businessModelRepository->create($request);
 
-    return response()->json($businessModelCreated);
+    return jsend_success($businessModelCreated);
   }
 
   /**
@@ -40,7 +40,7 @@ class BusinessModelController extends Controller
    */
   public function show(BusinessModel $businessModel)
   {
-    return response()->json($this->businessModelRepository->find($businessModel));
+    return jsend_success($this->businessModelRepository->find($businessModel));
   }
 
   /**
@@ -50,7 +50,7 @@ class BusinessModelController extends Controller
   {
     $businessModelUpdated = $this->businessModelRepository->update($request, $businessModel);
 
-    return response()->json($businessModelUpdated);
+    return jsend_success($businessModelUpdated);
   }
 
   /**
@@ -60,9 +60,6 @@ class BusinessModelController extends Controller
   {
     $this->businessModelRepository->delete($businessModel);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $businessModel
-    ]);
+    return jsend_success($businessModel);
   }
 }

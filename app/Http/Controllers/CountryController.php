@@ -22,7 +22,7 @@ class CountryController extends Controller
   {
     $countries = $this->countryRepository->all();
 
-    return response()->json($countries);
+    return jsend_success($countries);
   }
 
   /**
@@ -32,7 +32,7 @@ class CountryController extends Controller
   {
     $countryCreated = $this->countryRepository->create($request);
 
-    return response()->json($countryCreated);
+    return jsend_success($countryCreated);
   }
 
   /**
@@ -40,7 +40,7 @@ class CountryController extends Controller
    */
   public function show(Country $country)
   {
-    return response()->json($this->countryRepository->find($country));
+    return jsend_success($this->countryRepository->find($country));
   }
 
   /**
@@ -50,7 +50,7 @@ class CountryController extends Controller
   {
     $countryUpdated = $this->countryRepository->update($request, $country);
 
-    return response()->json($countryUpdated);
+    return jsend_success($countryUpdated);
   }
 
   /**
@@ -60,9 +60,6 @@ class CountryController extends Controller
   {
     $this->countryRepository->delete($country);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $country
-    ]);
+    return jsend_success($country);
   }
 }

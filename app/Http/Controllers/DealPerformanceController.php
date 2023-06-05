@@ -22,7 +22,7 @@ class DealPerformanceController extends Controller
   {
     $deals = $this->dealPerformanceRepository->all();
 
-    return response()->json($deals);
+    return jsend_success($deals);
   }
 
   /**
@@ -32,7 +32,7 @@ class DealPerformanceController extends Controller
   {
     $dealCreated = $this->dealPerformanceRepository->create($request);
 
-    return response()->json($dealCreated);
+    return jsend_success($dealCreated);
   }
 
   /**
@@ -40,7 +40,7 @@ class DealPerformanceController extends Controller
    */
   public function show(DealPerformance $dealsPerformance)
   {
-    return response()->json($this->dealPerformanceRepository->find($dealsPerformance));
+    return jsend_success($this->dealPerformanceRepository->find($dealsPerformance));
   }
 
   /**
@@ -50,7 +50,7 @@ class DealPerformanceController extends Controller
   {
     $dealUpdated = $this->dealPerformanceRepository->update($request, $dealsPerformance);
 
-    return response()->json($dealUpdated);
+    return jsend_success($dealUpdated);
   }
 
   /**
@@ -60,9 +60,6 @@ class DealPerformanceController extends Controller
   {
     $this->dealPerformanceRepository->delete($dealsPerformance);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $dealsPerformance
-    ]);
+    return jsend_success($dealsPerformance);
   }
 }

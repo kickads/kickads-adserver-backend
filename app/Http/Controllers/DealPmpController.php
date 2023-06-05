@@ -22,7 +22,7 @@ class DealPmpController extends Controller
   {
     $deals = $this->dealPmpRepository->all();
 
-    return response()->json($deals);
+    return jsend_success($deals);
   }
 
   /**
@@ -32,7 +32,7 @@ class DealPmpController extends Controller
   {
     $dealCreated = $this->dealPmpRepository->create($request);
 
-    return response()->json($dealCreated);
+    return jsend_success($dealCreated);
   }
 
   /**
@@ -40,7 +40,7 @@ class DealPmpController extends Controller
    */
   public function show(DealPmp $dealsPmp)
   {
-    return response()->json($this->dealPmpRepository->find($dealsPmp));
+    return jsend_success($this->dealPmpRepository->find($dealsPmp));
   }
 
   /**
@@ -50,7 +50,7 @@ class DealPmpController extends Controller
   {
     $dealUpdated = $this->dealPmpRepository->update($request, $dealsPmp);
 
-    return response()->json($dealUpdated);
+    return jsend_success($dealUpdated);
   }
 
   /**
@@ -60,9 +60,6 @@ class DealPmpController extends Controller
   {
     $this->dealPmpRepository->delete($dealsPmp);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $dealsPmp
-    ]);
+    return jsend_success($dealsPmp);
   }
 }

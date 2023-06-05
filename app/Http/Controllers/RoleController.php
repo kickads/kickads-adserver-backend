@@ -22,7 +22,7 @@ class RoleController extends Controller
   {
     $roles = $this->roleRepository->getRoleNames();
 
-    return response()->json($roles);
+    return jsend_success($roles);
   }
 
   /**
@@ -32,7 +32,7 @@ class RoleController extends Controller
   {
     $roleCreated = $this->roleRepository->create($request);
 
-    return response()->json($roleCreated);
+    return jsend_success($roleCreated);
   }
 
   /**
@@ -40,7 +40,7 @@ class RoleController extends Controller
    */
   public function show(Role $role)
   {
-    return response()->json($this->roleRepository->find($role));
+    return jsend_success($this->roleRepository->find($role));
   }
 
   /**
@@ -50,7 +50,7 @@ class RoleController extends Controller
   {
     $roleUpdated = $this->roleRepository->updateRoleName($request, $role);
 
-    return response()->json($roleUpdated);
+    return jsend_success($roleUpdated);
   }
 
   /**
@@ -60,9 +60,6 @@ class RoleController extends Controller
   {
     $this->roleRepository->delete($role);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $role
-    ]);
+    return jsend_success($role);
   }
 }

@@ -22,7 +22,7 @@ class DealBrandingController extends Controller
   {
     $deals = $this->dealBrandingRepository->all();
 
-    return response()->json($deals);
+    return jsend_success($deals);
   }
 
   /**
@@ -32,7 +32,7 @@ class DealBrandingController extends Controller
   {
     $dealCreated = $this->dealBrandingRepository->create($request);
 
-    return response()->json($dealCreated);
+    return jsend_success($dealCreated);
   }
 
   /**
@@ -40,7 +40,7 @@ class DealBrandingController extends Controller
    */
   public function show(DealBranding $dealsBranding)
   {
-    return response()->json($this->dealBrandingRepository->find($dealsBranding));
+    return jsend_success($this->dealBrandingRepository->find($dealsBranding));
   }
 
   /**
@@ -50,7 +50,7 @@ class DealBrandingController extends Controller
   {
     $dealUpdated = $this->dealBrandingRepository->update($request, $dealsBranding);
 
-    return response()->json($dealUpdated);
+    return jsend_success($dealUpdated);
   }
 
   /**
@@ -60,9 +60,6 @@ class DealBrandingController extends Controller
   {
     $this->dealBrandingRepository->delete($dealsBranding);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $dealsBranding
-    ]);
+    return jsend_success($dealsBranding);
   }
 }

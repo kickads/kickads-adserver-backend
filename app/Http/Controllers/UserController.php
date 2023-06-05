@@ -20,7 +20,9 @@ class UserController extends Controller
    */
   public function index()
   {
-    return response()->json($this->userRepository->all());
+    $users = $this->userRepository->all();
+
+    return jsend_success($users);
   }
 
   /**
@@ -28,7 +30,7 @@ class UserController extends Controller
    */
   public function show(User $user)
   {
-    return response()->json($user);
+    return jsend_success($this->userRepository->find($user));
   }
 
   /**
@@ -36,9 +38,9 @@ class UserController extends Controller
    */
   public function update(Request $request, User $user)
   {
-    $oldUser = $this->userRepository->updateRole($request, $user);
+    $userUpdated = $this->userRepository->updateRole($request, $user);
 
-    return response()->json($oldUser->roles);
+    return jsend_success($userUpdated->roles);
   }
 
   /**
@@ -49,12 +51,8 @@ class UserController extends Controller
     $user->tokens()->delete();
 //    request()->session()->regenerateToken();
 //    request()->user()->currentAccessToken()->delete();
-
     $this->userRepository->delete($user);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $user
-    ]);
+    return jsend_success($user);
   }
 }

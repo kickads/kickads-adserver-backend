@@ -22,7 +22,7 @@ class EntityController extends Controller
   {
     $entities = $this->entityRepository->all();
 
-    return response()->json($entities);
+    return jsend_success($entities);
   }
 
   /**
@@ -32,7 +32,7 @@ class EntityController extends Controller
   {
     $entityCreated = $this->entityRepository->create($request);
 
-    return response()->json($entityCreated);
+    return jsend_success($entityCreated);
   }
 
   /**
@@ -40,7 +40,7 @@ class EntityController extends Controller
    */
   public function show(Entity $entity)
   {
-    return response()->json($this->entityRepository->find($entity));
+    return jsend_success($this->entityRepository->find($entity));
   }
 
   /**
@@ -50,7 +50,7 @@ class EntityController extends Controller
   {
     $entityUpdated = $this->entityRepository->update($request, $entity);
 
-    return response()->json($entityUpdated);
+    return jsend_success($entityUpdated);
   }
 
   /**
@@ -60,9 +60,6 @@ class EntityController extends Controller
   {
     $this->entityRepository->delete($entity);
 
-    return response()->json([
-      'status' => 'success',
-      'data'   => $entity
-    ]);
+    return jsend_success($entity);
   }
 }
