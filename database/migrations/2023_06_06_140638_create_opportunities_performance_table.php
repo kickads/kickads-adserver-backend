@@ -13,6 +13,7 @@ return new class extends Migration {
     Schema::create('opportunities_performance', function (Blueprint $table) {
       $table->id();
       // Campos en común
+      $table->foreignId('deals_performance_id')->constrained('deals_performance');
       $table->foreignId('country_id')->constrained();
       $table->foreignId('purchase_models_id')->constrained();
       $table->string('product');
