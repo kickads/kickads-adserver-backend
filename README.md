@@ -9,7 +9,7 @@
 Clonar repositorio
 
 ```bash
-  git clone git@github.com:Hernanarica/laravel-socialite-google-auth.git
+  git clone git@github.com:kickads/kickads-adserver-backend.git
 ```
 
 Ir a la carpeta de proyecto
@@ -47,7 +47,7 @@ Correr contenedor con Laravel Sail(Tener Docker desktop encendido)
 Clonar repositorio
 
 ```bash
-  git clone git@github.com:Hernanarica/laravel-socialite-google-auth.git
+  git clone git@github.com:kickads/kickads-adserver-backend.git
 ```
 
 Ir a la carpeta de proyecto
