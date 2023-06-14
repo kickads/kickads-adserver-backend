@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
@@ -28,10 +29,9 @@ class AuthController extends Controller
       $user->assignRole('guest');
     }
 
-    return response()->json([
-      'status'    => 'success',
-      'user'      => $user,
-      'api_token' => $user->createToken('api_token')->plainTextToken
+    return jsend_success([
+      'user'      => new UserResource($user),
+      'user_token' => $user->createToken('user_token')->plainTextToken
     ]);
   }
 
