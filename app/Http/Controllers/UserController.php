@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserCollection;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class UserController extends Controller
   {
     $users = $this->userRepository->all();
 
-    return jsend_success($users);
+    return jsend_success(new UserCollection($users));
   }
 
   /**
