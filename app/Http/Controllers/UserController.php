@@ -6,6 +6,7 @@ use App\Http\Resources\UserCollection;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -21,7 +22,7 @@ class UserController extends Controller
    */
   public function index()
   {
-    $users = $this->userRepository->all();
+    $users = $this->userRepository->all()->except(Auth::user()->id);
 
     return jsend_success(new UserCollection($users));
   }
