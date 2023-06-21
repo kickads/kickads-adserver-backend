@@ -24,7 +24,7 @@ class RoleSeeder extends Seeder
         'updated_at' => date('Y-m-d'),
       ],
       [
-        'name'       => 'client-services',
+        'name'       => 'client services',
         'created_at' => date('Y-m-d'),
         'updated_at' => date('Y-m-d'),
       ],
@@ -34,7 +34,7 @@ class RoleSeeder extends Seeder
         'updated_at' => date('Y-m-d'),
       ],
       [
-        'name'       => 'comercial',
+        'name'       => 'commercial',
         'created_at' => date('Y-m-d'),
         'updated_at' => date('Y-m-d'),
       ],
