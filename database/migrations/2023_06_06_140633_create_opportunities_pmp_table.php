@@ -14,7 +14,7 @@ return new class extends Migration {
       $table->id();
       // Campos en común
       $table->foreignId('deals_pmp_id')->constrained('deals_pmp');
-      $table->foreignId('country_id')->constrained();
+      $table->foreignId('country_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
       $table->foreignId('purchase_models_id')->constrained();
       $table->string('product');
       $table->string('start_date');

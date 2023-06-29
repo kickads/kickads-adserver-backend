@@ -12,7 +12,7 @@ return new class extends Migration {
   {
     Schema::create('currencies', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('country_id')->constrained();
+      $table->foreignId('country_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
       $table->float('value');
       $table->timestamps();
     });
