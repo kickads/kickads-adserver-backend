@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CountryCollection;
 use App\Models\Country;
 use App\Repositories\CountryRepository;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class CountryController extends Controller
   {
     $countries = $this->countryRepository->all();
 
-    return jsend_success($countries);
+    return jsend_success(new CountryCollection($countries));
   }
 
   /**
