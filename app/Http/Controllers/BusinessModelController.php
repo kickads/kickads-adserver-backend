@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BusinessModel\BusinessModelCollection;
 use App\Models\BusinessModel;
 use App\Repositories\BusinessModelRepository;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class BusinessModelController extends Controller
   {
     $businessModels = $this->businessModelRepository->all();
 
-    return response()->json($businessModels);
+    return response()->json(new BusinessModelCollection($businessModels));
   }
 
   /**
