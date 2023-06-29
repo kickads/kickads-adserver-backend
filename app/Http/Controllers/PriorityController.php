@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Priority\PriorityCollection;
 use App\Models\Priority;
 use App\Repositories\PriorityRepository;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class PriorityController extends Controller
   {
     $priorities = $this->priorityRepository->all();
 
-    return response()->json($priorities);
+    return response()->json(new PriorityCollection($priorities));
   }
 
   /**
