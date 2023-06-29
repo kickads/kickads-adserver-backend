@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Entity\EntityCollection;
 use App\Models\Entity;
 use App\Repositories\EntityRepository;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class EntityController extends Controller
   {
     $entities = $this->entityRepository->all();
 
-    return jsend_success($entities);
+    return jsend_success(new EntityCollection($entities));
   }
 
   /**
