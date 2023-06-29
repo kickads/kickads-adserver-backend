@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -56,5 +57,10 @@ class UserController extends Controller
     $this->userRepository->delete($user);
 
     return jsend_success($user);
+  }
+
+  public function getAuthUser()
+  {
+    return jsend_success(new UserResource($this->userRepository->getAuthUser()));
   }
 }

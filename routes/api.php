@@ -57,3 +57,7 @@ Route::apiResource('priorities', PriorityController::class);
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
   Route::apiResource('users', UserController::class);
 });
+
+Route::middleware(['auth:sanctum'])->group(function () {
+  Route::get('user', [UserController::class, 'getAuthUser']);
+});

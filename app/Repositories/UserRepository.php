@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserRepository extends CrudRepository
 {
@@ -21,5 +22,10 @@ class UserRepository extends CrudRepository
     $oldUser->assignRole($request->role);
 
     return $oldUser;
+  }
+
+  public function getAuthUser()
+  {
+    return Auth::user();
   }
 }
