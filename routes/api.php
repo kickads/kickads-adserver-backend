@@ -37,13 +37,7 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
   Route::post('logout', 'logout')->middleware('auth:sanctum');
 });
 
-Route::apiResource('business-models', BusinessModelController::class);
-Route::apiResource('countries', CountryController::class);
-Route::apiResource('entities', EntityController::class);
-Route::apiResource('currencies', CurrencyController::class);
-Route::apiResource('companies', CompanyController::class);
 Route::apiResource('advertisers', AdvertiserController::class);
-Route::apiResource('roles', RoleController::class);
 Route::apiResource('deals', DealController::class); // TODO: Examinar su existencia
 Route::apiResource('deals-branding', DealBrandingController::class);
 Route::apiResource('deals-performance', DealPerformanceController::class);
@@ -52,10 +46,16 @@ Route::apiResource('verticals', VerticalController::class);
 Route::apiResource('dsps', DspController::class);
 Route::apiResource('ios', IosController::class);
 Route::apiResource('campaign-categories', CampaignCategoryController::class);
-Route::apiResource('priorities', PriorityController::class);
 
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
   Route::apiResource('users', UserController::class);
+  Route::apiResource('business-models', BusinessModelController::class);
+  Route::apiResource('companies', CompanyController::class);
+  Route::apiResource('countries', CountryController::class);
+  Route::apiResource('currencies', CurrencyController::class);
+  Route::apiResource('entities', EntityController::class);
+  Route::apiResource('priorities', PriorityController::class);
+  Route::apiResource('roles', RoleController::class);
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
