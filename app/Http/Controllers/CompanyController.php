@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Companies\CompaniesCollection;
+use App\Http\Resources\Companies\CompaniesResource;
+use App\Http\Resources\CountryResource;
 use App\Models\Company;
 use App\Repositories\CompanyRepository;
 use Illuminate\Http\Request;
@@ -22,7 +25,7 @@ class CompanyController extends Controller
   {
     $companies = $this->companyRepository->all();
 
-    return jsend_success($companies);
+    return jsend_success(new CompaniesCollection($companies));
   }
 
   /**
@@ -40,7 +43,8 @@ class CompanyController extends Controller
    */
   public function show(Company $company)
   {
-    return jsend_success($this->companyRepository->find($company));
+    $country = $this->companyRepository->find($company);
+    return jsend_success(new CompaniesResource($country));
   }
 
   /**
