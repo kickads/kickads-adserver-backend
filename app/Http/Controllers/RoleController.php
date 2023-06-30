@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Role\RoleCollection;
+use App\Http\Resources\Role\RoleResource;
 use App\Repositories\RoleRepository;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -40,7 +42,8 @@ class RoleController extends Controller
    */
   public function show(Role $role)
   {
-    return jsend_success($this->roleRepository->find($role));
+    $role = $this->roleRepository->find($role);
+    return jsend_success(new RoleResource($role));
   }
 
   /**
