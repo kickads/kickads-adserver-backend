@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\Companies\CompaniesCollection;
 use App\Http\Resources\Companies\CompaniesResource;
-use App\Http\Resources\CountryResource;
 use App\Models\Company;
 use App\Repositories\CompanyRepository;
 use Illuminate\Http\Request;

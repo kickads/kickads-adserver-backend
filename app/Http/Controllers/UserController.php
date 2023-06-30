@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UserCollection;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\User\UserCollection;
+use App\Http\Resources\User\UserResource;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -33,7 +33,8 @@ class UserController extends Controller
    */
   public function show(User $user)
   {
-    return jsend_success($this->userRepository->find($user));
+    $user = $this->userRepository->find($user);
+    return jsend_success(new UserResource($user));
   }
 
   /**

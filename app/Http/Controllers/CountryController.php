@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CountryCollection;
+use App\Http\Resources\Country\CountryCollection;
+use App\Http\Resources\Country\CountryResource;
 use App\Models\Country;
 use App\Repositories\CountryRepository;
 use Illuminate\Http\Request;
@@ -41,7 +42,8 @@ class CountryController extends Controller
    */
   public function show(Country $country)
   {
-    return jsend_success($this->countryRepository->find($country));
+    $country = $this->countryRepository->find($country);
+    return jsend_success(new CountryResource($country));
   }
 
   /**
