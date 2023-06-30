@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Currency\CurrencyCollection;
+use App\Http\Resources\Currency\CurrencyResource;
 use App\Models\Currency;
 use App\Repositories\CurrencyRepository;
 use Illuminate\Http\Request;
@@ -22,7 +24,7 @@ class CurrencyController extends Controller
   {
     $currencies = $this->currencyRepository->all();
 
-    return jsend_success($currencies);
+    return jsend_success(new CurrencyCollection($currencies));
   }
 
   /**
@@ -40,7 +42,8 @@ class CurrencyController extends Controller
    */
   public function show(Currency $currency)
   {
-    return jsend_success($this->currencyRepository->find($currency));
+    $currency = $this->currencyRepository->find($currency);
+    return jsend_success(new CurrencyResource($currency));
   }
 
   /**
