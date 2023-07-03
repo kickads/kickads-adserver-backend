@@ -13,9 +13,9 @@ return new class extends Migration {
     Schema::create('opportunities_branding', function (Blueprint $table) {
       $table->id();
       // Campos en común
-      $table->foreignId('deals_branding_id')->constrained('deals_branding');
+      $table->foreignId('deals_branding_id')->nullable()->constrained('deals_branding')->cascadeOnUpdate()->nullOnDelete();;
       $table->foreignId('country_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
-      $table->foreignId('purchase_models_id')->constrained();
+      $table->foreignId('purchase_models_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
       $table->string('product');
       $table->string('start_date');
       $table->string('end_date');

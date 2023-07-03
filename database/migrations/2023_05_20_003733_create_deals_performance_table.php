@@ -13,13 +13,13 @@ return new class extends Migration {
     Schema::create('deals_performance', function (Blueprint $table) {
       // Propios de la entidad Deal
       $table->id();
-      $table->foreignId('business_model_id')->constrained();
-      $table->foreignId('advertiser_id')->constrained();
-      $table->foreignId('entity_id')->constrained();
-      $table->foreignId('company_id')->constrained();
-      $table->foreignId('ios_id')->constrained();
-      $table->foreignId('campaign_category_id')->constrained();
-      $table->foreignId('priority_id')->constrained();
+      $table->foreignId('business_model_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('advertiser_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('entity_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('company_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('ios_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('campaign_category_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('priority_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
       $table->string('goal_description');
       $table->string('start_date');
       $table->string('end_date');

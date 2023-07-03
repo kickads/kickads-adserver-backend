@@ -12,10 +12,10 @@ return new class extends Migration {
   {
     Schema::create('advertisers', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('company_id')->constrained()->cascadeOnUpdate();
-      $table->foreignId('entity_id')->constrained()->cascadeOnUpdate();
+      $table->foreignId('company_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('entity_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
       $table->foreignId('country_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
-      $table->foreignId('currency_id')->constrained()->cascadeOnUpdate();
+      $table->foreignId('currency_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
       $table->string('name', '100');
       $table->string('prefix', '10');
       $table->string('address');

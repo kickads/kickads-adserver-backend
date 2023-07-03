@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\Priority\PriorityCollection;
+use App\Http\Resources\Priority\PriorityResource;
 use App\Models\Priority;
 use App\Repositories\PriorityRepository;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class PriorityController extends Controller
   {
     $priorities = $this->priorityRepository->all();
 
-    return response()->json(new PriorityCollection($priorities));
+    return jsend_success(new PriorityCollection($priorities));
   }
 
   /**
@@ -41,7 +42,8 @@ class PriorityController extends Controller
    */
   public function show(Priority $priority)
   {
-    return jsend_success($this->priorityRepository->find($priority));
+    $priority = $this->priorityRepository->find($priority);
+    return jsend_success(new PriorityResource($priority));
   }
 
   /**

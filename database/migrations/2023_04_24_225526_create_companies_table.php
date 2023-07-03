@@ -12,7 +12,7 @@ return new class extends Migration {
   {
     Schema::create('companies', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('entity_id')->constrained();
+      $table->foreignId('entity_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
       $table->foreignId('country_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
       $table->string('name', 80);
       $table->timestamps();

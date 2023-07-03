@@ -18,15 +18,15 @@ return new class extends Migration {
        * materials_development_id
        * materials_upload_id
        */
-      $table->foreignId('business_model_id')->constrained();
-      $table->foreignId('advertiser_id')->constrained();
-      $table->foreignId('entity_id')->constrained();
-      $table->foreignId('company_id')->constrained();
-      $table->foreignId('vertical_id')->constrained();
-      $table->foreignId('dsp_id')->constrained();
-      $table->foreignId('ios_id')->constrained();
-      $table->foreignId('campaign_category_id')->constrained();
-      $table->foreignId('priority_id')->constrained();
+      $table->foreignId('business_model_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('advertiser_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('entity_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('company_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('vertical_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('dsp_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('ios_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('campaign_category_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
+      $table->foreignId('priority_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
       $table->string('goal_description');
       $table->string('start_date');
       $table->string('end_date');

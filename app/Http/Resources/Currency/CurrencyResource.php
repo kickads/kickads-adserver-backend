@@ -16,8 +16,10 @@ class CurrencyResource extends JsonResource
   {
     return [
       'id'         => $this->id,
-      'value'      => $this->value,
-      'country_id' => $this->country->name ?? 'Sin asignar',
+      'price'      => $this->price,
+      'name'       => $this->name,
+      'country'    => $this->country->name ?? 'Sin asignar',
+      'country_id' => $this->country_id ?? 'Sin asignar',
     ];
   }
 }

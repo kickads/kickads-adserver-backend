@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\BusinessModel\BusinessModelCollection;
+use App\Http\Resources\BusinessModel\BusinessModelResource;
 use App\Models\BusinessModel;
 use App\Repositories\BusinessModelRepository;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class BusinessModelController extends Controller
   {
     $businessModels = $this->businessModelRepository->all();
 
-    return response()->json(new BusinessModelCollection($businessModels));
+    return jsend_success(new BusinessModelCollection($businessModels));
   }
 
   /**
@@ -41,7 +42,8 @@ class BusinessModelController extends Controller
    */
   public function show(BusinessModel $businessModel)
   {
-    return jsend_success($this->businessModelRepository->find($businessModel));
+    $businessModel = $this->businessModelRepository->find($businessModel);
+    return jsend_success(new BusinessModelResource($businessModel));
   }
 
   /**

@@ -13,9 +13,9 @@ return new class extends Migration {
     Schema::create('opportunities_pmp', function (Blueprint $table) {
       $table->id();
       // Campos en común
-      $table->foreignId('deals_pmp_id')->constrained('deals_pmp');
+      $table->foreignId('deals_pmp_id')->nullable()->constrained('deals_pmp')->cascadeOnUpdate()->nullOnDelete();
       $table->foreignId('country_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
-      $table->foreignId('purchase_models_id')->constrained();
+      $table->foreignId('purchase_models_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();;
       $table->string('product');
       $table->string('start_date');
       $table->string('end_date');
