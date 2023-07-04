@@ -10,7 +10,7 @@ class Currency extends Model
 {
   use HasFactory;
 
-  protected $fillable = [ 'country_id', 'price', 'name' ];
+  protected $fillable = [ 'country_id', 'price', 'acronym' ];
 
   public function country(): HasOne
   {

@@ -60,4 +60,5 @@ Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
 
 Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('user', [UserController::class, 'getAuthUser']);
+  Route::get('currency-acronyms', [CurrencyController::class, 'getAcronymNames']);
 });

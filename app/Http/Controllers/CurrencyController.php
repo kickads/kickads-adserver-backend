@@ -8,7 +8,6 @@ use App\Http\Resources\Currency\CurrencyCollection;
 use App\Http\Resources\Currency\CurrencyResource;
 use App\Models\Currency;
 use App\Repositories\CurrencyRepository;
-use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
 {
@@ -66,5 +65,11 @@ class CurrencyController extends Controller
     $this->currencyRepository->delete($currency);
 
     return jsend_success($currency);
+  }
+
+  public function getAcronymNames()
+  {
+    $acronyms = $this->currencyRepository->getAcronymNames();
+    return jsend_success($acronyms);
   }
 }

@@ -31,7 +31,7 @@ class CurrencyUpdateRequest extends FormRequest
   public function rules(): array
   {
     return [
-      'name'       => 'required|string',
+      'acronym'    => 'required|string',
       'price'      => 'required|numeric',
       'country_id' => 'required|numeric',
     ];

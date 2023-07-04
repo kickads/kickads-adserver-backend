@@ -10,4 +10,9 @@ class CurrencyRepository extends CrudRepository
   {
     parent::__construct($currency);
   }
+
+  public function getAcronymNames(): \Illuminate\Support\Collection
+  {
+    return Currency::all()->pluck('acronym');
+  }
 }
