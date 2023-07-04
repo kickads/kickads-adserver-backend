@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Priority\PriorityStoreRequest;
+use App\Http\Requests\Priority\PriorityUpdateRequest;
 use App\Http\Resources\Priority\PriorityCollection;
 use App\Http\Resources\Priority\PriorityResource;
 use App\Models\Priority;
@@ -30,7 +32,7 @@ class PriorityController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(PriorityStoreRequest $request)
   {
     $priorityCreated = $this->priorityRepository->create($request);
 
@@ -49,7 +51,7 @@ class PriorityController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Priority $priority)
+  public function update(PriorityUpdateRequest $request, Priority $priority)
   {
     $priorityUpdated = $this->priorityRepository->update($request, $priority);
 
