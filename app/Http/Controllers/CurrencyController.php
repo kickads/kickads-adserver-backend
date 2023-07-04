@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Currency\CurrencyStoreRequest;
+use App\Http\Requests\Currency\CurrencyUpdateRequest;
 use App\Http\Resources\Currency\CurrencyCollection;
 use App\Http\Resources\Currency\CurrencyResource;
 use App\Models\Currency;
@@ -30,7 +32,7 @@ class CurrencyController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(CurrencyStoreRequest $request)
   {
     $currencyCreated = $this->currencyRepository->create($request);
 
@@ -49,7 +51,7 @@ class CurrencyController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Currency $currency)
+  public function update(CurrencyUpdateRequest $request, Currency $currency)
   {
     $currencyUpdated = $this->currencyRepository->update($request, $currency);
 
