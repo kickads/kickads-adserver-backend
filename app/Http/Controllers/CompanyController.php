@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Company\CompanyStoreRequest;
+use App\Http\Requests\Company\CompanyUpdateRequest;
 use App\Http\Resources\Companies\CompaniesCollection;
 use App\Http\Resources\Companies\CompaniesResource;
 use App\Models\Company;
@@ -30,7 +32,7 @@ class CompanyController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(CompanyStoreRequest $request)
   {
     $companyCreated = $this->companyRepository->create($request);
 
@@ -49,7 +51,7 @@ class CompanyController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Company $company)
+  public function update(CompanyUpdateRequest $request, Company $company)
   {
     $companyUpdated = $this->companyRepository->update($request, $company);
 
