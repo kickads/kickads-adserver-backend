@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Country\CountryStoreRequest;
+use App\Http\Requests\Country\CountryUpdateRequest;
 use App\Http\Resources\Country\CountryCollection;
 use App\Http\Resources\Country\CountryResource;
 use App\Models\Country;
 use App\Repositories\CountryRepository;
-use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
@@ -30,7 +31,7 @@ class CountryController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(CountryStoreRequest $request)
   {
     $countryCreated = $this->countryRepository->create($request);
 
@@ -49,7 +50,7 @@ class CountryController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Country $country)
+  public function update(CountryUpdateRequest $request, Country $country)
   {
     $countryUpdated = $this->countryRepository->update($request, $country);
 
