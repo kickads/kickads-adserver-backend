@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Role\RoleStoreRequest;
+use App\Http\Requests\Role\RoleUpdateRequest;
 use App\Http\Resources\Role\RoleCollection;
 use App\Http\Resources\Role\RoleResource;
 use App\Repositories\RoleRepository;
@@ -30,7 +32,7 @@ class RoleController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(RoleStoreRequest $request)
   {
     $roleCreated = $this->roleRepository->create($request);
 
@@ -49,7 +51,7 @@ class RoleController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Role $role)
+  public function update(RoleUpdateRequest $request, Role $role)
   {
     $roleUpdated = $this->roleRepository->updateRoleName($request, $role);
 
