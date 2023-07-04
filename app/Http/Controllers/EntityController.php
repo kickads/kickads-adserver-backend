@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Entities\EntityStoreRequest;
+use App\Http\Requests\Entities\EntityUpdateRequest;
 use App\Http\Resources\Entity\EntityCollection;
 use App\Models\Entity;
 use App\Repositories\EntityRepository;
@@ -29,7 +31,7 @@ class EntityController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(EntityStoreRequest $request)
   {
     $entityCreated = $this->entityRepository->create($request);
 
@@ -47,7 +49,7 @@ class EntityController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Entity $entity)
+  public function update(EntityUpdateRequest $request, Entity $entity)
   {
     $entityUpdated = $this->entityRepository->update($request, $entity);
 
