@@ -22,9 +22,9 @@ class RoleController extends Controller
    */
   public function index()
   {
-    $roles = $this->roleRepository->getRoleNames();
+    $roles = $this->roleRepository->all();
 
-    return jsend_success($roles);
+    return jsend_success(new RoleCollection($roles));
   }
 
   /**
