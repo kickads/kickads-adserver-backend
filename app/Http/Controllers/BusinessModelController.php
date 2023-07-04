@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BusinessModel\BusinessModelStoreRequest;
+use App\Http\Requests\BusinessModel\BusinessModelUpdateRequest;
 use App\Http\Resources\BusinessModel\BusinessModelCollection;
 use App\Http\Resources\BusinessModel\BusinessModelResource;
 use App\Models\BusinessModel;
@@ -30,7 +32,7 @@ class BusinessModelController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(BusinessModelStoreRequest $request)
   {
     $businessModelCreated = $this->businessModelRepository->create($request);
 
@@ -49,7 +51,7 @@ class BusinessModelController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, BusinessModel $businessModel)
+  public function update(BusinessModelUpdateRequest $request, BusinessModel $businessModel)
   {
     $businessModelUpdated = $this->businessModelRepository->update($request, $businessModel);
 
