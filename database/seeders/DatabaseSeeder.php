@@ -29,6 +29,11 @@ class DatabaseSeeder extends Seeder
       DealBrandingSeeder::class,
       DealPerformanceSeeder::class,
       DealPmpSeeder::class,
+      CreativeSeeder::class,
+      ClientSeeder::class,
+      IntersticialSeeder::class,
+      ClickSeeder::class,
+      InteractionSeeder::class,
     ]);
   }
 }

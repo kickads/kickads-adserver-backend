@@ -3,8 +3,11 @@
 use App\Http\Controllers\AdvertiserController;
 use App\Http\Controllers\BusinessModelController;
 use App\Http\Controllers\CampaignCategoryController;
+use App\Http\Controllers\ClickController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CreativeController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\DealBrandingController;
 use App\Http\Controllers\DealController;
@@ -13,6 +16,8 @@ use App\Http\Controllers\DealPmpController;
 use App\Http\Controllers\DspController;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InteractionController;
+use App\Http\Controllers\IntersticialController;
 use App\Http\Controllers\IosController;
 use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\RoleController;
@@ -62,3 +67,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('user', [UserController::class, 'getAuthUser']);
   Route::get('currency-acronyms', [CurrencyController::class, 'getAcronymNames']);
 });
+
+
+Route::apiResource('intersticials', IntersticialController::class);
+Route::apiResource('creatives', CreativeController::class);
+Route::apiResource('clients', ClientController::class);
+Route::apiResource('clicks', ClickController::class);
+Route::patch('clicks/{intersticialId}/{clickName}', [ClickController::class, 'incrementClick']);
+Route::apiResource('interactions', InteractionController::class);
