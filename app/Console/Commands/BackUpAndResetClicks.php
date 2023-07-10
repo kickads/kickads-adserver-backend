@@ -26,6 +26,19 @@ class BackUpAndResetClicks extends Command
    */
   public function handle()
   {
+//    BackUp
+    $clicks = Click::all();
+//
+    foreach ($clicks as $click) {
+      $backUpClick = new \App\Models\BackUpAndResetClicks();
+      $backUpClick->intersticial_id = $click->intersticial_id;
+      $backUpClick->name = $click->name;
+      $backUpClick->total = $click->total;
+      $backUpClick->date = now()->format('Y-m-d');
+      $backUpClick->save();
+    }
+
+//    Reset
     Click::where('total', '>', 0)->update([
       'total' => 0
     ]);

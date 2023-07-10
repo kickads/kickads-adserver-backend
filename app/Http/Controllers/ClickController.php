@@ -66,14 +66,4 @@ class ClickController extends Controller
 
     return jsend_success($click);
   }
-
-  public function resetClicks()
-  {
-    $clicks = Click::where('total', '>', 0)->update([
-      'total' => 0
-    ]);
-
-    return jsend_success($clicks);
-  }
-
 }

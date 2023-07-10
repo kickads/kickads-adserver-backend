@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
   protected function schedule(Schedule $schedule): void
   {
      $schedule->command('backup-and-reset-clicks')->everyMinute();
-     $schedule->command('backup-and-reset-interactions')->everyMinute();
+//     $schedule->command('backup-and-reset-interactions')->everyMinute();
   }
 
   /**
