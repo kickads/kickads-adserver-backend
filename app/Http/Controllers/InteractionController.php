@@ -48,4 +48,22 @@ class InteractionController extends Controller
   {
     //
   }
+
+  public function incrementInteraction(int $intersticialId, string $interactionName)
+  {
+    $currentDay = now()->format('Y-m-d');
+
+    $interaction = Interaction::where([
+      ['intersticial_id', $intersticialId],
+      ['name', $interactionName]
+    ])->first();
+
+    if (!$interaction) return jsend_error('No encontrado');
+
+    if ($interaction->intersticial->end_day < $currentDay) return jsend_error('Fuera de fecha');
+
+    $interaction->increment('total', 1);
+
+    return jsend_success($interaction);
+  }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\BackUpAndResetClicks as BackUpAndResetClicksModel;
 use App\Models\Click;
 use Illuminate\Console\Command;
 
@@ -19,7 +20,7 @@ class BackUpAndResetClicks extends Command
    *
    * @var string
    */
-  protected $description = 'Resetea todos los clicks a su valor por defecto y guarda los del dia anterior en la tabla';
+  protected $description = 'Resetea todos los clicks a 0 y guarda los del dia anterior en una tabla backup';
 
   /**
    * Execute the console command.
@@ -28,9 +29,11 @@ class BackUpAndResetClicks extends Command
   {
 //    BackUp
     $clicks = Click::all();
-//
+
     foreach ($clicks as $click) {
-      $backUpClick = new \App\Models\BackUpAndResetClicks();
+      if ($click->total === 0) continue;
+
+      $backUpClick = new BackUpAndResetClicksModel();
       $backUpClick->intersticial_id = $click->intersticial_id;
       $backUpClick->name = $click->name;
       $backUpClick->total = $click->total;

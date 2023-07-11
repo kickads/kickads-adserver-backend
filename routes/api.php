@@ -72,6 +72,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::apiResource('intersticials', IntersticialController::class);
 Route::apiResource('creatives', CreativeController::class);
 Route::apiResource('clients', ClientController::class);
+
 Route::apiResource('clicks', ClickController::class);
 Route::patch('clicks/{intersticialId}/{clickName}', [ClickController::class, 'incrementClick']);
+
 Route::apiResource('interactions', InteractionController::class);
+Route::patch('interactions/{intersticialId}/{interactionName}', [InteractionController::class, 'incrementInteraction']);
