@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Creative\CreativeCollection;
 use App\Models\Creative;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class CreativeController extends Controller
    */
   public function index()
   {
-    //
+    $creatives = Creative::all();
+
+    return jsend_success(new CreativeCollection($creatives));
   }
 
   /**

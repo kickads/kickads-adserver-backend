@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Client\ClientCollection;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class ClientController extends Controller
    */
   public function index()
   {
-    //
+    $clients = Client::all();
+
+    return jsend_success(new ClientCollection($clients));
   }
 
   /**

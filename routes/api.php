@@ -68,7 +68,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('currency-acronyms', [CurrencyController::class, 'getAcronymNames']);
 });
 
-
 Route::apiResource('intersticials', IntersticialController::class);
 Route::apiResource('creatives', CreativeController::class);
 Route::apiResource('clients', ClientController::class);

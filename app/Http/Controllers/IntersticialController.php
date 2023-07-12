@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Click;
+use App\Models\Interaction;
 use App\Models\Intersticial;
 use Illuminate\Http\Request;
 
@@ -22,7 +24,29 @@ class IntersticialController extends Controller
    */
   public function store(Request $request)
   {
-    $intersticialCreated = Intersticial::create($request->all());
+    $intersticialCreated = Intersticial::create($request->intersticial);
+
+    $clicks = $request->clicks;
+
+    if (count($clicks)) {
+      foreach ($clicks as $click) {
+        Click::create([
+          'intersticial_id' => $intersticialCreated->id,
+          'name'            => $click,
+        ]);
+      }
+    }
+
+    $interactions = $request->interactions;
+
+    if (count($interactions)) {
+      foreach ($interactions as $interaction) {
+        Interaction::create([
+          'intersticial_id' => $intersticialCreated->id,
+          'name'            => $interaction,
+        ]);
+      }
+    }
 
     return jsend_success($intersticialCreated);
   }
