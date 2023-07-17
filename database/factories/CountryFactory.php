@@ -17,7 +17,7 @@ class CountryFactory extends Factory
   public function definition(): array
   {
     return [
-      'name'       => $this->faker->country(),
+      'name'       => $this->faker->unique()->country(),
       'created_at' => date('Y-m-d H:i:s'),
       'updated_at' => date('Y-m-d H:i:s')
     ];
