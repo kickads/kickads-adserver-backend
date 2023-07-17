@@ -30,8 +30,10 @@ class BackUpAndResetInteractions extends Command
     //    BackUp
     $interactions = Interaction::all();
 
+    $currentDay = now()->format('Y-m-d');
+
     foreach ($interactions as $interaction) {
-      if ($interaction->total === 0) continue;
+      if ($interaction->total === 0 && $interaction->intersticial->end_day >= $currentDay) continue;
 
       $backUpInteraction = new BackUpAndResetInteractionsModel();
       $backUpInteraction->intersticial_id = $interaction->intersticial_id;

@@ -30,14 +30,16 @@ class BackUpAndResetClicks extends Command
 //    BackUp
     $clicks = Click::all();
 
+    $currentDay = now()->format('Y-m-d');
+
     foreach ($clicks as $click) {
-      if ($click->total === 0) continue;
+      if ($click->total === 0 && $click->intersticial->end_day >= $currentDay) continue;
 
       $backUpClick = new BackUpAndResetClicksModel();
       $backUpClick->intersticial_id = $click->intersticial_id;
       $backUpClick->name = $click->name;
       $backUpClick->total = $click->total;
-      $backUpClick->date = now()->format('Y-m-d');
+      $backUpClick->date = $currentDay;
       $backUpClick->save();
     }
 
