@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class OpportunityBranding extends Model
 {
   use HasFactory;
+
+  protected $table = 'opportunities_branding';
 }

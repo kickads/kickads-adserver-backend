@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class OpportunityPmp extends Model
 {
   use HasFactory;
+
+  protected $table = 'opportunities_pmp';
 }
