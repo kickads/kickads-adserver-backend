@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Intersticial\IntersticialCollection;
 use App\Models\Click;
 use App\Models\Interaction;
 use App\Models\Intersticial;
@@ -16,7 +17,7 @@ class IntersticialController extends Controller
   {
     $intersticials = Intersticial::all();
 
-    return jsend_success($intersticials);
+    return jsend_success(new IntersticialCollection($intersticials));
   }
 
   /**

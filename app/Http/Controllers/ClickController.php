@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ClickIncrement;
 use App\Models\Click;
 use Illuminate\Http\Request;
 
@@ -63,6 +64,8 @@ class ClickController extends Controller
     if ($click->intersticial->end_day < $currentDay) return jsend_error('Fuera de fecha');
 
     $click->increment('total', 1);
+
+    broadcast(new ClickIncrement())->toOthers();
 
     return jsend_success($click);
   }
