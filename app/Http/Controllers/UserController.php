@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AssignRole;
 use App\Http\Resources\User\UserCollection;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
@@ -44,7 +45,9 @@ class UserController extends Controller
   {
     $userUpdated = $this->userRepository->updateRole($request, $user);
 
-    return jsend_success($userUpdated->roles);
+    event(new AssignRole(new UserResource($userUpdated)));
+
+    return jsend_success(new UserResource($userUpdated));
   }
 
   /**
