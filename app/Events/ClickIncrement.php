@@ -30,9 +30,6 @@ class ClickIncrement implements ShouldBroadcast
   public function broadcastOn(): array
   {
     return ['click-increment-channel'];
-//    return [
-//      new PrivateChannel('channel-name'),
-//    ];
   }
 
   public function broadcastAs(): string

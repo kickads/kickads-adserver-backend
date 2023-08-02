@@ -1,6 +1,5 @@
 <?php
 
-use App\Events\ClickIncrement;
 use App\Http\Controllers\AdvertiserController;
 use App\Http\Controllers\BusinessModelController;
 use App\Http\Controllers\CampaignCategoryController;
@@ -21,7 +20,6 @@ use App\Http\Controllers\InteractionController;
 use App\Http\Controllers\IntersticialController;
 use App\Http\Controllers\IosController;
 use App\Http\Controllers\PriorityController;
-use App\Http\Controllers\PusherController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerticalController;
@@ -79,7 +77,3 @@ Route::patch('clicks/{intersticialId}/{clickName}', [ClickController::class, 'in
 
 Route::apiResource('interactions', InteractionController::class);
 Route::patch('interactions/{intersticialId}/{interactionName}', [InteractionController::class, 'incrementInteraction']);
-
-Route::get('/', [PusherController::class, 'index']);
-Route::post('/broadcast', [PusherController::class, 'broadcast']);
-Route::post('/receive', [PusherController::class, 'receive']);
