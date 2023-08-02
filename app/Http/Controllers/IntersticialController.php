@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Intersticial\IntersticialStoreRequest;
 use App\Models\Click;
 use App\Models\Interaction;
 use App\Models\Intersticial;
@@ -22,7 +23,7 @@ class IntersticialController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(IntersticialStoreRequest $request)
   {
     $intersticialCreated = Intersticial::create($request->intersticial);
 
