@@ -27,7 +27,6 @@ class OpportunityBrandingController extends Controller
    */
   public function store(Request $request)
   {
-    return jsend_success($request->all());
     $opportunityBrandingCreated = $this->opportunityBrandingRepository->create($request);
 
     return jsend_success($opportunityBrandingCreated);
@@ -36,19 +35,19 @@ class OpportunityBrandingController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(OpportunityBranding $opportunityBranding)
+  public function show(OpportunityBranding $opportunities_branding)
   {
-    $opportunityBranding = $this->opportunityBrandingRepository->find($opportunityBranding);
+    $opportunityBranding = $this->opportunityBrandingRepository->find($opportunities_branding);
 
-    jsend_success($opportunityBranding);
+    return jsend_success($opportunityBranding);
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, OpportunityBranding $opportunityBranding)
+  public function update(Request $request, OpportunityBranding $opportunities_branding)
   {
-    $opportunityBrandingUpdated = $this->opportunityBrandingRepository->update($request, $opportunityBranding);
+    $opportunityBrandingUpdated = $this->opportunityBrandingRepository->update($request, $opportunities_branding);
 
     return jsend_success($opportunityBrandingUpdated);
   }
@@ -56,10 +55,10 @@ class OpportunityBrandingController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(OpportunityBranding $opportunityBranding)
+  public function destroy(OpportunityBranding $opportunities_branding)
   {
-    $this->opportunityBrandingRepository->delete($opportunityBranding);
+    $this->opportunityBrandingRepository->delete($opportunities_branding);
 
-    return jsend_success($opportunityBranding);
+    return jsend_success($opportunities_branding);
   }
 }
