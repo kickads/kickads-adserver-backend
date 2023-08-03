@@ -19,6 +19,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InteractionController;
 use App\Http\Controllers\IntersticialController;
 use App\Http\Controllers\IosController;
+use App\Http\Controllers\OpportunityBrandingController;
+use App\Http\Controllers\OpportunityPerformanceController;
+use App\Http\Controllers\OpportunityPmpController;
 use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -71,6 +74,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::apiResource('intersticials', IntersticialController::class);
 Route::apiResource('creatives', CreativeController::class);
 Route::apiResource('clients', ClientController::class);
+
+//OPPORTUNITIES
+Route::apiResource('opportunities-branding', OpportunityBrandingController::class);
+Route::apiResource('opportunities-performance', OpportunityPerformanceController::class);
+Route::apiResource('opportunities-pmp', OpportunityPmpController::class);
+//OPPORTUNITIES
 
 Route::apiResource('clicks', ClickController::class);
 Route::patch('clicks/{intersticialId}/{clickName}', [ClickController::class, 'incrementClick']);

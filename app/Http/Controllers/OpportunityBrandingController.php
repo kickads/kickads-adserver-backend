@@ -3,16 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\OpportunityBranding;
+use App\Repositories\OpportunityBrandingRepository;
 use Illuminate\Http\Request;
 
 class OpportunityBrandingController extends Controller
 {
+  public function __construct(public OpportunityBrandingRepository $opportunityBrandingRepository)
+  {
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    //
+    $opportunities = $this->opportunityBrandingRepository->all();
+
+    return jsend_success($opportunities);
   }
 
   /**
@@ -20,7 +27,10 @@ class OpportunityBrandingController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    return jsend_success($request->all());
+    $opportunityBrandingCreated = $this->opportunityBrandingRepository->create($request);
+
+    return jsend_success($opportunityBrandingCreated);
   }
 
   /**
@@ -28,7 +38,9 @@ class OpportunityBrandingController extends Controller
    */
   public function show(OpportunityBranding $opportunityBranding)
   {
-    //
+    $opportunityBranding = $this->opportunityBrandingRepository->find($opportunityBranding);
+
+    jsend_success($opportunityBranding);
   }
 
   /**
@@ -36,7 +48,9 @@ class OpportunityBrandingController extends Controller
    */
   public function update(Request $request, OpportunityBranding $opportunityBranding)
   {
-    //
+    $opportunityBrandingUpdated = $this->opportunityBrandingRepository->update($request, $opportunityBranding);
+
+    return jsend_success($opportunityBrandingUpdated);
   }
 
   /**
@@ -44,6 +58,8 @@ class OpportunityBrandingController extends Controller
    */
   public function destroy(OpportunityBranding $opportunityBranding)
   {
-    //
+    $this->opportunityBrandingRepository->delete($opportunityBranding);
+
+    return jsend_success($opportunityBranding);
   }
 }
