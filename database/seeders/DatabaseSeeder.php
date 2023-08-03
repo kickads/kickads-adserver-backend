@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
       ActionSeeder::class,
       DeviceSeeder::class,
       FormatSeeder::class,
+      PurchaseModelSeeder::class,
     ]);
   }
 }
