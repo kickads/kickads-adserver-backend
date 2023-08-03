@@ -34,6 +34,10 @@ class DatabaseSeeder extends Seeder
       IntersticialSeeder::class,
       ClickSeeder::class,
       InteractionSeeder::class,
+      ActionSeeder::class,
+      DeviceSeeder::class,
+      FormatSeeder::class,
+      PurchaseModelSeeder::class,
     ]);
   }
 }
