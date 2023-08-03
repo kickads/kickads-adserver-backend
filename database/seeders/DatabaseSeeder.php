@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
       ClickSeeder::class,
       InteractionSeeder::class,
       ActionSeeder::class,
+      DeviceSeeder::class,
     ]);
   }
 }
