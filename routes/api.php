@@ -26,6 +26,7 @@ use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerticalController;
+use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,7 +77,7 @@ Route::apiResource('creatives', CreativeController::class);
 Route::apiResource('clients', ClientController::class);
 
 //OPPORTUNITIES
-Route::apiResource('opportunities-branding', OpportunityBrandingController::class);
+Route::apiResource('opportunities-branding', OpportunityBrandingController::class)->middleware([HandlePrecognitiveRequests::class]);
 Route::apiResource('opportunities-performance', OpportunityPerformanceController::class);
 Route::apiResource('opportunities-pmp', OpportunityPmpController::class);
 //OPPORTUNITIES

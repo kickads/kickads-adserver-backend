@@ -31,6 +31,7 @@ class OpportunityBranding extends Model
     'available_budget',
     'goal_units',
     'start_date',
-    'end_date'
+    'end_date',
+    'is_multi_carrier'
   ];
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OpportunityBranding\OpportunityBrandingStoreRequest;
+use App\Http\Resources\Opportunity\OpportunityBrandingCollection;
 use App\Models\OpportunityBranding;
 use App\Repositories\OpportunityBrandingRepository;
 use Illuminate\Http\Request;
@@ -19,13 +21,13 @@ class OpportunityBrandingController extends Controller
   {
     $opportunities = $this->opportunityBrandingRepository->all();
 
-    return jsend_success($opportunities);
+    return jsend_success(new OpportunityBrandingCollection($opportunities));
   }
 
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(OpportunityBrandingStoreRequest $request)
   {
     $opportunityBrandingCreated = $this->opportunityBrandingRepository->create($request);
 
