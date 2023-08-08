@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Action extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  protected $fillable = ['created_at'];
 }

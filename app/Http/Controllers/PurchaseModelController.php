@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PurchaseModel\PurchaseModelCollection;
 use App\Models\PurchaseModel;
+use App\Repositories\PurchaseModelRepository;
 use Illuminate\Http\Request;
 
 class PurchaseModelController extends Controller
 {
+  public function __construct(public PurchaseModelRepository $purchaseModelRepository)
+  {
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
-    //
+    $purchase_models = $this->purchaseModelRepository->all();
+
+    return jsend_success(new PurchaseModelCollection($purchase_models));
   }
 
   /**

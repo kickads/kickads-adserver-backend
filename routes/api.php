@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActionController;
 use App\Http\Controllers\AdvertiserController;
 use App\Http\Controllers\BusinessModelController;
 use App\Http\Controllers\CampaignCategoryController;
@@ -13,9 +14,11 @@ use App\Http\Controllers\DealBrandingController;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\DealPerformanceController;
 use App\Http\Controllers\DealPmpController;
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\DspController;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FormatController;
 use App\Http\Controllers\InteractionController;
 use App\Http\Controllers\IntersticialController;
 use App\Http\Controllers\IosController;
@@ -23,6 +26,7 @@ use App\Http\Controllers\OpportunityBrandingController;
 use App\Http\Controllers\OpportunityPerformanceController;
 use App\Http\Controllers\OpportunityPmpController;
 use App\Http\Controllers\PriorityController;
+use App\Http\Controllers\PurchaseModelController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerticalController;
@@ -77,6 +81,11 @@ Route::apiResource('creatives', CreativeController::class);
 Route::apiResource('clients', ClientController::class);
 
 //OPPORTUNITIES
+Route::apiResource('devices', DeviceController::class);
+Route::apiResource('actions', ActionController::class);
+Route::apiResource('formats', FormatController::class);
+Route::apiResource('purchase-models', PurchaseModelController::class);
+
 Route::apiResource('opportunities-branding', OpportunityBrandingController::class)->middleware([HandlePrecognitiveRequests::class]);
 Route::apiResource('opportunities-performance', OpportunityPerformanceController::class);
 Route::apiResource('opportunities-pmp', OpportunityPmpController::class);

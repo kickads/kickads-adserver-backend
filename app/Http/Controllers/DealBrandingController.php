@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DealBranding\DealBrandingCollection;
 use App\Models\DealBranding;
 use App\Repositories\DealBrandingRepository;
 use Illuminate\Http\Request;
@@ -20,9 +21,9 @@ class DealBrandingController extends Controller
    */
   public function index()
   {
-    $deals = $this->dealBrandingRepository->all();
+    $dealsBranding = $this->dealBrandingRepository->all();
 
-    return jsend_success($deals);
+    return jsend_success(new DealBrandingCollection($dealsBranding));
   }
 
   /**
